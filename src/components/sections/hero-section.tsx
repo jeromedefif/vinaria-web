@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center">
+    <section className="relative h-[90vh] flex items-center">
       {/* Background image */}
       <div
         className="absolute inset-0 z-0"
@@ -44,8 +44,10 @@ export default function HeroSection() {
               Katalog vín a nápojů
             </Link>
             <a
-              href="https://www.beginy.cz"
+              href="https://www.beginy.cz/login"
               className="font-montserrat border-2 border-white text-white px-8 py-3 rounded text-lg font-medium transition hover:bg-white/10"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               B2B přihlášení
             </a>
@@ -53,13 +55,13 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Animovaná šipka pro srolování dolů */}
+      {/* Animovaná šipka pro srolování dolů - upravená pozice pro lepší viditelnost */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
         onClick={() => window.scrollTo({
-          top: window.innerHeight,
+          top: window.innerHeight * 0.9, // Scrolluje o 90% výšky viewportu
           behavior: 'smooth'
         })}
       >
@@ -73,6 +75,7 @@ export default function HeroSection() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          className="filter drop-shadow-lg" // Přidává stín pro lepší viditelnost
         >
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>

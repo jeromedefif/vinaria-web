@@ -1,46 +1,54 @@
 import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Grape, Wine, Martini, TestTube, Box, Amphora } from 'lucide-react';
 
 // Produktové kategorie s ikonami a barvami podobnými B2B portálu
 const categories = [
   {
     id: 'vino',
     name: 'Révová vína',
-    icon: '🍷',
+    icon: Grape,
     color: 'bg-purple-100 text-purple-800 border-purple-200',
     count: '40+ produktů',
-    examples: ['Grüner Veltliner','Cabernet Sauvignon', 'Chardonnay', 'Traminer', 'Merlot', 'Ryzlink']
+    examples: ['Grüner Veltliner','Cabernet Sauvignon', 'Chardonnay', 'Traminer', 'Merlot', 'Muscat']
   },
   {
     id: 'napoje',
     name: 'Nápoje',
-    icon: '🥃',
+    icon: Martini,
     color: 'bg-blue-100 text-blue-800 border-blue-200',
-    count: '70+ produktů',
+    count: '73 produktů',
     examples: ['Vezel', 'Moport', 'Frisspool', 'Tračer', 'Charnay EX', 'Rušed']
   },
   {
     id: 'ovocne',
-    name: 'Ovocná vína',
-    icon: '🍒',
+    name: 'Ovocné víno',
+    icon: Wine,
     color: 'bg-red-100 text-red-800 border-red-200',
     count: '8 produktů',
     examples: ['Borůvka', 'Višeň', 'Johannisberwein (rybíz)', 'STRAWBERRY', 'Svařák']
   },
   {
+    id: 'burcak',
+    name: 'Burčák',
+    icon: Amphora, // Změna z Droplet na Amphora
+    color: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    count: '2 produkty',
+    examples: ['Moravský burčák', 'Částečně zkvašený hroznový mošt']
+  },
+  {
     id: 'dusik',
-    name: 'Plyny',
-    icon: '💨',
+    name: 'Dusík',
+    icon: TestTube,
     color: 'bg-gray-100 text-gray-800 border-gray-200',
     count: '3 produkty',
-    examples: ['Dusík - potravinářský', 'Biogon', 'CO2',]
+    examples: ['Dusík - potravinářský', 'Biogon', 'CO2']
   },
   {
     id: 'pet',
-    name: 'PET láhve',
-    icon: '🧴',
+    name: 'PET',
+    icon: Box,
     color: 'bg-amber-100 text-amber-800 border-amber-200',
     count: '8 produktů',
     examples: ['PET láhve 1L', 'PET láhve 1,5L', 'PET láhve 2L', 'PET láhve 5L', 'Uzávěry', 'Ouška']
@@ -71,7 +79,7 @@ export default function Katalog() {
               <div key={category.id} className={`border ${category.color.split(' ')[2]} rounded-lg p-6 transition-shadow hover:shadow-md`}>
                 <div className="flex items-center mb-4">
                   <span className={`inline-flex items-center justify-center w-10 h-10 rounded-full ${category.color.split(' ').slice(0, 2).join(' ')} mr-3`}>
-                    {category.icon}
+                    <category.icon size={20} />
                   </span>
                   <h3 className="font-playfair font-bold text-xl">{category.name}</h3>
                 </div>

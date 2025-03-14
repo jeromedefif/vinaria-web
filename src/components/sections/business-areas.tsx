@@ -2,37 +2,44 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Droplet, Grape, Martini, Box, TestTube, Amphora } from 'lucide-react';
 
 const businessAreas = [
   {
     id: 'stacirna',
     title: 'Stáčírna vín',
     description: 'Prodej nebalených vín v cisternách, IBC kontejnerech nebo v KEG sudech pro vinaře a distribuční sítě.',
-    icon: '🍷', // Můžete nahradit SVG ikonou
+    icon: Droplet, // Změna z Wine na Droplet
   },
   {
     id: 'velkoobchod-vino',
     title: 'Velkoobchod vínem',
     description: 'Balená a nebalená vína v Bag-in-Box (5L, 10L, 20L) a KEG sudech (30L, 50L) pro gastronomii a vinotéky.',
-    icon: '🍇', // Můžete nahradit SVG ikonou
+    icon: Grape,
   },
   {
     id: 'ostatni-napoje',
     title: 'Ostatní alkoholické nápoje',
     description: 'Výroba a distribuce alkoholických nápojů pro gastronomická zařízení v KEG sudech 30L a 50L.',
-    icon: '🥃', // Můžete nahradit SVG ikonou
+    icon: Martini,
+  },
+  {
+    id: 'burcak',
+    title: 'Burčák',
+    description: 'Moravský burčák a Částečně zkvašený hroznový mošt - tradiční sezonní specialita.',
+    icon: Amphora,
   },
   {
     id: 'pet-lahve',
     title: 'Prodej PET lahví',
     description: 'Dodávky PET lahví o objemech 1L, 1,5L, 2L a 5L pro zákazníky, kteří odebírají naše produkty.',
-    icon: '🧴', // Můžete nahradit SVG ikonou
+    icon: Box,
   },
   {
     id: 'plyny',
     title: 'Potravinářské plyny',
     description: 'Nabídka potravinářského dusíku, Biogonu a CO2 pro gastronomii a nápojový průmysl.',
-    icon: '💨', // Můžete nahradit SVG ikonou
+    icon: TestTube,
   },
 ];
 
@@ -58,8 +65,10 @@ export default function BusinessAreas() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="text-4xl mb-4">{area.icon}</div>
-              <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-2">
+              <div className="flex justify-center mb-4">
+                <area.icon size={40} className="text-wine-burgundy" />
+              </div>
+              <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-2 text-center">
                 {area.title}
               </h3>
               <p className="font-montserrat text-gray-700 mb-4">

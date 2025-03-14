@@ -19,16 +19,23 @@ export default function ONas() {
             </p>
             <p className="font-montserrat text-gray-700 mb-4">
               Za téměř dvě dekády působení na českém trhu jsme si vybudovali pověst spolehlivého partnera ve velkoobchodu s vínem.
-              Naší hlavní činností je provozování stáčírny vín a distribuce kvalitních zahraničních a moravských vín.
+              Naší hlavní činností je provozování stáčírny vín, distribuce kvalitních zahraničních a moravských vín a výroba ostatních alkoholických nápojů.
             </p>
             <p className="font-montserrat text-gray-700">
-              Hlavní náplní firmy VINARIA je provozování stáčírny vín – velkoobchodu s vínem. Našimi zákazníky jsou
+              Hlavní náplní firmy VINARIA je provozování stáčírny vín – velkoobchodu s vínem a nápoji. Našimi zákazníky jsou
               distribuční sítě, vinaři, vinotéky, vinárny, restaurace a hotely.
             </p>
           </div>
-          <div className="bg-gray-200 rounded-lg h-64 md:h-auto">
-            {/* Zde by byl reálný obrázek vašich sklepů nebo firmy */}
-          </div>
+          <div className="rounded-lg overflow-hidden h-64 md:h-auto">
+  <Image
+    src="/images/stary_sud.jpg"
+    alt="Vinný sklep VINARIA"
+    width={600}
+    height={400}
+    className="rounded-lg w-full h-full object-cover"
+    priority
+  />
+</div>
         </div>
 
         <div className="bg-wine-cream p-8 rounded-lg mb-12">
@@ -49,7 +56,7 @@ export default function ONas() {
             <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-4">Stáčírna vín</h3>
             <p className="font-montserrat text-gray-700 mb-4">
               Dovážíme nebalená vína v cisternách především z Rakouska, Moldávie, Itálie a Španělska. Standardně dodáváme
-              pro odběratele kompletní analytický rozbor vín. Vína jsou před expedicí ošetřena svícovou filtrací o čistotě 0,5 µ.
+              pro velkoodběratele kompletní analytický rozbor vín. Vína jsou před expedicí ošetřena svícovou filtrací o čistotě 0,5 µ.
             </p>
             <p className="font-montserrat text-gray-700">
               Nebalená vína distribuujeme zabalená dle přání zákazníka po celé ČR, obvykle v závozech 1.800 – 24.000 litrů.
@@ -63,7 +70,7 @@ export default function ONas() {
               vinárny, vinné šenky, restaurace, hotely a jiná gastronomická zařízení.
             </p>
             <p className="font-montserrat text-gray-700">
-              Kromě vín nabízíme také široký sortiment ostatních alkoholických nápojů, potravinářských plynů a PET lahví.
+              Kromě vín nabízíme také široký sortiment ostatních alkoholických nápojů, ovocných vín, burčáků, svařáků, potravinářských plynů a PET lahví.
             </p>
           </div>
         </div>

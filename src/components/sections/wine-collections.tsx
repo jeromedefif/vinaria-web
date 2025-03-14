@@ -2,52 +2,62 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Grape, Wine, Martini, TestTube, Box, Amphora } from 'lucide-react';
 
-// Definice kolekcí produktů podle vašeho B2B portálu
+// Definice kolekcí produktů s jemnějším vzhledem
 const productCategories = [
   {
     id: 'revova-vina',
     title: 'Révová vína',
     description: 'Kvalitní révová vína z Rakouska, Moldávie, Itálie a Španělska v různých variantách sladkosti a objemu.',
-    image: 'https://placehold.co/600x400/4E1A1F/F5F1E7',
-    icon: '🍷',
-    color: 'bg-purple-100 text-purple-800',
+    icon: Grape,
+    pillBgColor: 'bg-pink-50',
+    pillTextColor: 'text-wine-burgundy',
     link: '/katalog?kategorie=vino'
   },
   {
     id: 'ovocna-vina',
     title: 'Ovocná vína',
     description: 'Výběr ovocných vín jako Višeň, Borůvka, Johannisberwein (rybíz) a další chutné varianty.',
-    image: 'https://placehold.co/600x400/722F37/F5F1E7',
-    icon: '🍒',
-    color: 'bg-red-100 text-red-800',
+    icon: Wine,
+    pillBgColor: 'bg-pink-50',
+    pillTextColor: 'text-wine-burgundy',
     link: '/katalog?kategorie=ovocne'
   },
   {
     id: 'napoje',
     title: 'Ostatní alkoholické nápoje',
     description: 'Široká nabídka ostatních alkoholických nápojů včetně speciálních edic a exclusive variant.',
-    image: 'https://placehold.co/600x400/C8A355/4E1A1F',
-    icon: '🥃',
-    color: 'bg-blue-100 text-blue-800',
+    icon: Martini,
+    pillBgColor: 'bg-blue-50',
+    pillTextColor: 'text-blue-800',
     link: '/katalog?kategorie=napoje'
   },
   {
-    id: 'dusik',
+    id: 'burcak',
+    title: 'Burčák',
+    description: 'Moravský burčák a Částečně zkvašený hroznový mošt - sezonní speciality.',
+    icon: Amphora,
+    pillBgColor: 'bg-amber-50',
+    pillTextColor: 'text-amber-800',
+    link: '/katalog?kategorie=burcak'
+  },
+  {
+    id: 'plyny',
     title: 'Potravinářské plyny',
     description: 'Potravinářský dusík, Biogon a CO2 v různých baleních pro gastronomii a výčepní technologie.',
-    image: 'https://placehold.co/600x400/F5F1E7/4E1A1F',
-    icon: '💨',
-    color: 'bg-gray-100 text-gray-800',
+    icon: TestTube,
+    pillBgColor: 'bg-gray-50',
+    pillTextColor: 'text-gray-700',
     link: '/katalog?kategorie=plyny'
   },
   {
     id: 'pet',
     title: 'PET láhve',
     description: 'PET láhve o objemech 1L, 1,5L, 2L a 5L včetně uzávěrů a ostatního příslušenství.',
-    image: 'https://placehold.co/600x400/87CEEB/4E1A1F',
-    icon: '🧴',
-    color: 'bg-amber-100 text-amber-800',
+    icon: Box,
+    pillBgColor: 'bg-sky-50',
+    pillTextColor: 'text-sky-800',
     link: '/katalog?kategorie=pet'
   }
 ];
@@ -58,7 +68,7 @@ export default function ProductCategories() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-wine-burgundy mb-4">
-            Katalog vín a nápojů
+            Přehled našeho sortimentu
           </h2>
           <p className="font-montserrat text-gray-700 max-w-3xl mx-auto">
             Nabízíme široký sortiment révových vín, ovocných vín a ostatních alkoholických nápojů,
@@ -73,19 +83,13 @@ export default function ProductCategories() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg overflow-hidden shadow-lg"
+              className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100"
             >
-              <div
-                className="h-16 flex items-center justify-center"
-                style={{
-                  backgroundImage: `url('${category.image}')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <span className={`text-xl font-bold px-4 py-2 rounded-full ${category.color}`}>
-                  {category.icon} {category.title}
-                </span>
+              <div className="flex items-center justify-center h-16 bg-white border-b border-gray-100">
+                <div className={`rounded-full ${category.pillBgColor} ${category.pillTextColor} flex items-center px-6 py-2`}>
+                  <category.icon size={20} className="mr-2" />
+                  <span className="font-bold">{category.title}</span>
+                </div>
               </div>
               <div className="p-6">
                 <p className="font-montserrat text-gray-700 mb-4">
@@ -102,13 +106,31 @@ export default function ProductCategories() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <a
-            href="https://www.beginy.cz"
-            className="font-montserrat bg-wine-burgundy text-white px-8 py-3 rounded text-lg font-medium transition hover:bg-wine-red inline-block"
-          >
-            Kompletní B2B katalog
-          </a>
+        {/* Kompletní B2B katalog box - s bílým pozadím pro lepší kontrast */}
+        <div className="bg-white rounded-lg p-8 text-center mt-12 border border-gray-200 shadow-sm">
+          <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4">
+            Kompletní sortiment v B2B katalogu
+          </h2>
+          <p className="font-montserrat text-gray-700 mb-6 max-w-2xl mx-auto">
+            Pro přístup ke kompletnímu sortimentu, dostupnosti a možnosti online
+            objednávky se registrujte v našem B2B systému.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://www.beginy.cz/login"
+              className="font-montserrat bg-wine-burgundy text-white px-6 py-3 rounded font-medium hover:bg-wine-red transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Přihlásit se do B2B
+            </a>
+            <Link
+              href="/kontakt"
+              className="font-montserrat border border-wine-burgundy text-wine-burgundy px-6 py-3 rounded font-medium hover:bg-wine-burgundy hover:text-white transition"
+            >
+              Kontaktovat obchodního zástupce
+            </Link>
+          </div>
         </div>
       </div>
     </section>
