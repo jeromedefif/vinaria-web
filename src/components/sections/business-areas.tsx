@@ -75,7 +75,7 @@ export default function BusinessAreas() {
                 {area.description}
               </p>
               <Link
-                href={`/katalog?oblast=${area.id}`}
+                href={`/obchodni-zastupce?oblast=${area.id}`}
                 className="font-montserrat inline-block text-wine-burgundy border-b-2 border-wine-gold pb-1 transition hover:text-wine-red"
               >
                 Zobrazit produkty

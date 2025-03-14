@@ -119,7 +119,7 @@ export default function Katalog() {
               Přihlásit se do B2B
             </a>
             <Link
-              href="/kontakt"
+              href="/obchodni-zastupce"
               className="font-montserrat border border-wine-burgundy text-wine-burgundy px-6 py-3 rounded font-medium hover:bg-wine-burgundy hover:text-white transition"
             >
               Kontaktovat obchodního zástupce

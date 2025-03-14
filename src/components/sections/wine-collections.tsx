@@ -62,6 +62,16 @@ const productCategories = [
   }
 ];
 
+// Definice pulzujícího efektu
+const pulseAnimation = {
+  scale: [1, 1.05, 1],
+  transition: {
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }
+};
+
 export default function ProductCategories() {
   return (
     <section className="py-16 bg-wine-cream">
@@ -124,12 +134,17 @@ export default function ProductCategories() {
             >
               Přihlásit se do B2B
             </a>
-            <Link
-              href="/kontakt"
-              className="font-montserrat border border-wine-burgundy text-wine-burgundy px-6 py-3 rounded font-medium hover:bg-wine-burgundy hover:text-white transition"
+            <motion.div
+              animate={pulseAnimation}
+              whileHover={{ scale: 1.05 }}
             >
-              Kontaktovat obchodního zástupce
-            </Link>
+              <Link
+                href="/obchodni-zastupce"
+                className="font-montserrat border border-wine-burgundy text-wine-burgundy px-6 py-3 rounded font-medium hover:bg-wine-burgundy hover:text-white transition inline-block"
+              >
+                Kontaktovat obchodního zástupce
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>

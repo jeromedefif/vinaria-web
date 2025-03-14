@@ -16,36 +16,42 @@ export default function Footer() {
             </p>
           </div>
 
-          <div>
-            <h4 className="font-playfair text-lg font-semibold text-gray-800 mb-4">Navigace</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
-                  Úvod
-                </Link>
-              </li>
-              <li>
-                <Link href="/katalog" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
-                  Katalog vín a nápojů
-                </Link>
-              </li>
-              <li>
-                <Link href="/o-nas" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
-                  O nás
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
-                  Kontakt
-                </Link>
-              </li>
-              <li>
-                <a href="https://www.beginy.cz" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
-                  B2B přihlášení
-                </a>
-              </li>
-            </ul>
-          </div>
+
+<div>
+  <h4 className="font-playfair text-lg font-semibold text-gray-800 mb-4">Navigace</h4>
+  <ul className="space-y-2">
+    <li>
+      <Link href="/" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
+        Úvod
+      </Link>
+    </li>
+    <li>
+      <Link href="/katalog" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
+        Katalog vín a nápojů
+      </Link>
+    </li>
+    <li>
+      <Link href="/o-nas" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
+        O nás
+      </Link>
+    </li>
+    <li>
+      <Link href="/kontakt" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
+        Kontakt
+      </Link>
+    </li>
+    <li>
+      <Link href="/obchodni-zastupce" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy">
+        Obchodní zástupce
+      </Link>
+    </li>
+    <li>
+      <a href="https://www.beginy.cz/login" className="font-montserrat text-sm text-gray-700 hover:text-wine-burgundy" target="_blank" rel="noopener noreferrer">
+        B2B přihlášení
+      </a>
+    </li>
+  </ul>
+</div>
 
           <div>
             <h4 className="font-playfair text-lg font-semibold text-gray-800 mb-4">Kontakt</h4>
