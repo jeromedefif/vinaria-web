@@ -1,103 +1,125 @@
-import Image from "next/image";
+import Navbar from '@/components/ui/navbar';
+import Footer from '@/components/ui/footer';
+import Link from 'next/link';
+import Image from 'next/image';
 
-export default function Home() {
+// Produktové kategorie s ikonami a barvami podobnými B2B portálu
+const categories = [
+  {
+    id: 'vino',
+    name: 'Révová vína',
+    icon: '🍷',
+    color: 'bg-purple-100 text-purple-800 border-purple-200',
+    count: '40+ produktů',
+    examples: ['Grüner Veltliner','Cabernet Sauvignon', 'Chardonnay', 'Traminer', 'Merlot', 'Ryzlink']
+  },
+  {
+    id: 'napoje',
+    name: 'Nápoje',
+    icon: '🥃',
+    color: 'bg-blue-100 text-blue-800 border-blue-200',
+    count: '70+ produktů',
+    examples: ['Vezel', 'Moport', 'Frisspool', 'Tračer', 'Charnay EX', 'Rušed']
+  },
+  {
+    id: 'ovocne',
+    name: 'Ovocná vína',
+    icon: '🍒',
+    color: 'bg-red-100 text-red-800 border-red-200',
+    count: '8 produktů',
+    examples: ['Borůvka', 'Višeň', 'Johannisberwein (rybíz)', 'STRAWBERRY', 'Svařák']
+  },
+  {
+    id: 'dusik',
+    name: 'Plyny',
+    icon: '💨',
+    color: 'bg-gray-100 text-gray-800 border-gray-200',
+    count: '3 produkty',
+    examples: ['Dusík - potravinářský', 'Biogon', 'CO2',]
+  },
+  {
+    id: 'pet',
+    name: 'PET láhve',
+    icon: '🧴',
+    color: 'bg-amber-100 text-amber-800 border-amber-200',
+    count: '8 produktů',
+    examples: ['PET láhve 1L', 'PET láhve 1,5L', 'PET láhve 2L', 'PET láhve 5L', 'Uzávěry', 'Ouška']
+  }
+];
+
+export default function Katalog() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Navbar />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="font-playfair text-3xl md:text-4xl font-bold text-wine-burgundy mb-8">
+          Katalog vín a nápojů
+        </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <p className="font-montserrat text-gray-700 mb-12">
+          Kompletní sortiment našich produktů je dostupný v B2B portálu. Zde najdete základní přehled kategorií našeho sortimentu.
+          Pro detailní informace o dostupnosti, cenách a objednávky kontaktujte našeho obchodního zástupce nebo použijte náš B2B portál.
+        </p>
+
+        <div className="mb-12">
+          <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
+            Kategorie produktů
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {categories.map((category) => (
+              <div key={category.id} className={`border ${category.color.split(' ')[2]} rounded-lg p-6 transition-shadow hover:shadow-md`}>
+                <div className="flex items-center mb-4">
+                  <span className={`inline-flex items-center justify-center w-10 h-10 rounded-full ${category.color.split(' ').slice(0, 2).join(' ')} mr-3`}>
+                    {category.icon}
+                  </span>
+                  <h3 className="font-playfair font-bold text-xl">{category.name}</h3>
+                </div>
+                <p className="font-montserrat text-sm text-gray-500 mb-3">{category.count}</p>
+                <ul className="font-montserrat text-gray-700 mb-4 space-y-1">
+                  {category.examples.map((example, i) => (
+                    <li key={i} className="text-sm">• {example}</li>
+                  ))}
+                </ul>
+                <a
+                  href="https://www.beginy.cz"
+                  className="font-montserrat inline-block text-wine-burgundy border-b-2 border-wine-gold pb-1 transition hover:text-wine-red"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Zobrazit v B2B katalogu
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-wine-cream rounded-lg p-8 text-center">
+          <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4">
+            Kompletní sortiment v B2B katalogu
+          </h2>
+          <p className="font-montserrat text-gray-700 mb-6 max-w-2xl mx-auto">
+            Pro přístup ke kompletnímu sortimentu včetně cen, dostupnosti a možnosti online objednávky se registrujte v našem B2B systému.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://www.beginy.cz"
+              className="font-montserrat bg-wine-burgundy text-white px-6 py-3 rounded font-medium hover:bg-wine-red transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Přihlásit se do B2B
+            </a>
+            <Link
+              href="/kontakt"
+              className="font-montserrat border border-wine-burgundy text-wine-burgundy px-6 py-3 rounded font-medium hover:bg-wine-burgundy hover:text-white transition"
+            >
+              Kontaktovat obchodního zástupce
+            </Link>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 }

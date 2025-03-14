@@ -1,55 +1,53 @@
-import Link from 'next/link';
+import BusinessAreas from '@/components/sections/business-areas';
+import HeroSection from '@/components/sections/hero-section';
+import ProductCategories from '@/components/sections/wine-collections';
+import Navbar from '@/components/ui/navbar';
+import Footer from '@/components/ui/footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white p-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-wine-burgundy mb-4">
-          Prémiová vína pro náročnou klientelu
-        </h1>
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <BusinessAreas />
+        <ProductCategories />
 
-        <p className="mb-8 text-gray-700">
-          Partner pro restaurace, hotely a vinotéky, které očekávají jen to nejlepší.
-        </p>
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="font-playfair text-3xl font-bold text-wine-burgundy mb-4">
+                Krédo naší firmy
+              </h2>
+              <p className="font-montserrat text-xl text-gray-700 max-w-3xl mx-auto italic">
+                "Včasné poskytování bezvadného produktu na celém území České republiky v přímé odezvě na přání zákazníka."
+              </p>
+            </div>
 
-        <div className="flex gap-4 mb-16">
-          <Link
-            href="/katalog"
-            className="bg-amber-600 text-white px-6 py-2 rounded"
-          >
-            Naše portfolio
-          </Link>
-          <a
-            href="https://www.beginy.cz"
-            className="border border-gray-400 px-6 py-2 rounded"
-          >
-            B2B přihlášení
-          </a>
-        </div>
-
-        <h2 className="text-2xl font-bold text-wine-burgundy mb-4">
-          Proč si vybrat naše vína?
-        </h2>
-
-        <p className="mb-4 text-gray-700">
-          V srdci moravského vinařského regionu vytváříme vína, která reprezentují to nejlepší, co naše krajina nabízí.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="border p-4 rounded">
-            <h3 className="font-bold mb-2">Tradice a kvalita</h3>
-            <p>Spojujeme tradiční vinařské postupy s moderními technologiemi.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="border border-gray-200 p-6 rounded-lg shadow-sm">
+                <h3 className="font-playfair font-bold text-xl mb-4 text-wine-burgundy">Tradice a spolehlivost</h3>
+                <p className="font-montserrat text-gray-700">
+                  Navazujeme na čtyřsetletou tradici výroby vína v historických sklepích v Brně. Jako rodinná firma od roku 2003 jsme spolehlivým partnerem ve velkoobchodu s vínem.
+                </p>
+              </div>
+              <div className="border border-gray-200 p-6 rounded-lg shadow-sm">
+                <h3 className="font-playfair font-bold text-xl mb-4 text-wine-burgundy">Kvalita bez kompromisů</h3>
+                <p className="font-montserrat text-gray-700">
+                  Všechna naše vína prochází pečlivou kontrolou kvality a svícovou filtrací o čistotě 0,5 µ. Ke každé dodávce poskytujeme kompletní analytický rozbor vín.
+                </p>
+              </div>
+              <div className="border border-gray-200 p-6 rounded-lg shadow-sm">
+                <h3 className="font-playfair font-bold text-xl mb-4 text-wine-burgundy">Flexibilní řešení</h3>
+                <p className="font-montserrat text-gray-700">
+                  Nabízíme širokou škálu balení od PET lahví a Bag-in-Box obalů až po KEG sudy. Dopravu zajišťujeme po celé České republice dle vašich požadavků.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="border p-4 rounded">
-            <h3 className="font-bold mb-2">Exkluzivita</h3>
-            <p>Naše vína najdete pouze ve vybraných gastronomických zařízeních.</p>
-          </div>
-          <div className="border p-4 rounded">
-            <h3 className="font-bold mb-2">Terroir a originalita</h3>
-            <p>Respektujeme jedinečný charakter každé vinice.</p>
-          </div>
-        </div>
-      </div>
-    </main>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }

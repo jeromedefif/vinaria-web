@@ -1,103 +1,116 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+// Definice kolekcí produktů podle vašeho B2B portálu
+const productCategories = [
+  {
+    id: 'revova-vina',
+    title: 'Révová vína',
+    description: 'Kvalitní révová vína z Rakouska, Moldávie, Itálie a Španělska v různých variantách sladkosti a objemu.',
+    image: 'https://placehold.co/600x400/4E1A1F/F5F1E7',
+    icon: '🍷',
+    color: 'bg-purple-100 text-purple-800',
+    link: '/katalog?kategorie=vino'
+  },
+  {
+    id: 'ovocna-vina',
+    title: 'Ovocná vína',
+    description: 'Výběr ovocných vín jako Višeň, Borůvka, Johannisberwein (rybíz) a další chutné varianty.',
+    image: 'https://placehold.co/600x400/722F37/F5F1E7',
+    icon: '🍒',
+    color: 'bg-red-100 text-red-800',
+    link: '/katalog?kategorie=ovocne'
+  },
+  {
+    id: 'napoje',
+    title: 'Ostatní alkoholické nápoje',
+    description: 'Široká nabídka ostatních alkoholických nápojů včetně speciálních edic a exclusive variant.',
+    image: 'https://placehold.co/600x400/C8A355/4E1A1F',
+    icon: '🥃',
+    color: 'bg-blue-100 text-blue-800',
+    link: '/katalog?kategorie=napoje'
+  },
+  {
+    id: 'dusik',
+    title: 'Potravinářské plyny',
+    description: 'Potravinářský dusík, Biogon a CO2 v různých baleních pro gastronomii a výčepní technologie.',
+    image: 'https://placehold.co/600x400/F5F1E7/4E1A1F',
+    icon: '💨',
+    color: 'bg-gray-100 text-gray-800',
+    link: '/katalog?kategorie=plyny'
+  },
+  {
+    id: 'pet',
+    title: 'PET láhve',
+    description: 'PET láhve o objemech 1L, 1,5L, 2L a 5L včetně uzávěrů a ostatního příslušenství.',
+    image: 'https://placehold.co/600x400/87CEEB/4E1A1F',
+    icon: '🧴',
+    color: 'bg-amber-100 text-amber-800',
+    link: '/katalog?kategorie=pet'
+  }
+];
+
+export default function ProductCategories() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <section className="py-16 bg-wine-cream">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-wine-burgundy mb-4">
+            Katalog vín a nápojů
+          </h2>
+          <p className="font-montserrat text-gray-700 max-w-3xl mx-auto">
+            Nabízíme široký sortiment révových vín, ovocných vín a ostatních alkoholických nápojů,
+            které jsou k dispozici v různých objemech a baleních.
+          </p>
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {productCategories.map((category, index) => (
+            <motion.div
+              key={category.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-lg overflow-hidden shadow-lg"
+            >
+              <div
+                className="h-16 flex items-center justify-center"
+                style={{
+                  backgroundImage: `url('${category.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
+                <span className={`text-xl font-bold px-4 py-2 rounded-full ${category.color}`}>
+                  {category.icon} {category.title}
+                </span>
+              </div>
+              <div className="p-6">
+                <p className="font-montserrat text-gray-700 mb-4">
+                  {category.description}
+                </p>
+                <Link
+                  href={category.link}
+                  className="font-montserrat inline-block text-wine-burgundy border-b-2 border-wine-gold pb-1 transition hover:text-wine-red"
+                >
+                  Zobrazit katalog
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://www.beginy.cz"
+            className="font-montserrat bg-wine-burgundy text-white px-8 py-3 rounded text-lg font-medium transition hover:bg-wine-red inline-block"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Kompletní B2B katalog
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </section>
   );
 }

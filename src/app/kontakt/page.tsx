@@ -1,103 +1,142 @@
-import Image from "next/image";
+import Navbar from '@/components/ui/navbar';
+import Footer from '@/components/ui/footer';
 
-export default function Home() {
+export default function Kontakt() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Navbar />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="font-playfair text-3xl md:text-4xl font-bold text-wine-burgundy mb-8">
+          Kontaktujte nás
+        </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+          <div>
+            <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4">
+              Napište nám
+            </h2>
+            <form className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block font-montserrat text-gray-700 mb-1">Jméno a příjmení</label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full p-2 border border-gray-300 rounded font-montserrat"
+                  placeholder="Vaše jméno"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block font-montserrat text-gray-700 mb-1">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full p-2 border border-gray-300 rounded font-montserrat"
+                  placeholder="Váš e-mail"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block font-montserrat text-gray-700 mb-1">Zpráva</label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  className="w-full p-2 border border-gray-300 rounded font-montserrat"
+                  placeholder="Vaše zpráva"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="bg-wine-burgundy text-white px-6 py-2 rounded font-montserrat hover:bg-wine-red transition"
+              >
+                Odeslat zprávu
+              </button>
+            </form>
+          </div>
+
+          <div>
+            <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4">
+              Kontaktní údaje
+            </h2>
+            <div className="font-montserrat space-y-6">
+              <div>
+                <h3 className="font-semibold text-lg mb-2">Společnost:</h3>
+                <address className="not-italic">
+                  <strong>VINARIA s.r.o.</strong><br />
+                  Jugoslávská 868/4a<br />
+                  613 00 Brno<br />
+                  IČ: 26904730
+                </address>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <h3 className="font-semibold">Ing. Michael Drápela, BA</h3>
+                  <p className="text-gray-700">ředitel</p>
+                  <p className="mt-1">
+                    <a href="mailto:drapela@vinaria.cz" className="text-wine-burgundy hover:underline">
+                      drapela@vinaria.cz
+                    </a>
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold">Ing. Roman Fiala</h3>
+                  <p className="text-gray-700">obchodní manažer pro ČR</p>
+                  <p className="mt-1">
+                    <a href="tel:+420734720994" className="text-wine-burgundy hover:underline">
+                      +420 734 720 994
+                    </a>
+                  </p>
+                  <p>
+                    <a href="mailto:fiala@vinaria.cz" className="text-wine-burgundy hover:underline">
+                      fiala@vinaria.cz
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-semibold mb-2">Kontaktní údaje:</h3>
+                <p>
+                  <span className="text-gray-700">E-mail:</span>{' '}
+                  <a href="mailto:info@vinaria.cz" className="text-wine-burgundy hover:underline">
+                    info@vinaria.cz
+                  </a>
+                </p>
+                <p>
+                  <span className="text-gray-700">Web:</span>{' '}
+                  <a href="https://www.vinaria.cz" className="text-wine-burgundy hover:underline">
+                    www.vinaria.cz
+                  </a>
+                </p>
+                <p>
+                  <span className="text-gray-700">B2B portál:</span>{' '}
+                  <a href="https://www.beginy.cz" className="text-wine-burgundy hover:underline">
+                    www.beginy.cz
+                  </a>
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold">Přímo v areálu se nachází parkoviště pro zákazníky.</p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-4">
+                Kde nás najdete
+              </h3>
+              <div className="bg-gray-200 h-48 rounded-lg">
+                {/* Zde by byla vložena mapa */}
+                {/* Například iframe s Google Maps */}
+                <div className="w-full h-full flex items-center justify-center text-gray-500">
+                  Interaktivní mapa
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 }

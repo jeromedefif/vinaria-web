@@ -14,6 +14,10 @@ const config: Config = {
         'wine-gold': '#C8A355',
         'wine-cream': '#F5F1E7',
       },
+      fontFamily: {
+        'playfair': ['var(--font-playfair)'],
+        'montserrat': ['var(--font-montserrat)'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
