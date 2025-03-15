@@ -39,7 +39,7 @@ export default function ObchodniZastupce() {
               <div className="w-full flex flex-col items-center">
                 <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-wine-gold shadow-lg">
                   <Image
-                    src="/images/selfie.jpeg"
+                    src="/images/selfie.jpg"
                     alt="Ing. Roman Fiala - Obchodní manažer"
                     fill
                     className="object-cover scale-[1]"
