@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative h-[90vh] flex items-center">
+    <section className="relative h-[80vh] flex items-center">
       {/* Background image */}
       <div
         className="absolute inset-0 z-0"
@@ -55,30 +56,17 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Animovaná šipka pro srolování dolů - upravená pozice pro lepší viditelnost */}
+      {/* Animovaná šipka pro srolování dolů */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
         onClick={() => window.scrollTo({
-          top: window.innerHeight * 0.9, // Scrolluje o 90% výšky viewportu
+          top: window.innerHeight * 0.8, // Scrolluje o 80% výšky viewportu
           behavior: 'smooth'
         })}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#FFFFFF"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="filter drop-shadow-lg" // Přidává stín pro lepší viditelnost
-        >
-          <path d="M12 5v14M5 12l7 7 7-7"/>
-        </svg>
+        <ChevronDown className="text-white w-12 h-12 filter drop-shadow-lg" />
       </motion.div>
     </section>
   );

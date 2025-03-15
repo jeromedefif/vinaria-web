@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import CookieConsent from '@/components/ui/cookie-consent'
+import ScrollToTopOnNavigation from '@/components/ui/scroll-to-top-on-navigation'
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="cs" className={`${inter.variable}`}>
       <body className={inter.className}>
+        <ScrollToTopOnNavigation />
         {children}
         <CookieConsent />
       </body>

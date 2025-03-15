@@ -44,52 +44,11 @@ export default function Kontakt() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          <div>
-            <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4">
-              Napište nám
-            </h2>
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block font-montserrat text-gray-700 mb-1">Jméno a příjmení</label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full p-2 border border-gray-300 rounded font-montserrat"
-                  placeholder="Vaše jméno"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block font-montserrat text-gray-700 mb-1">E-mail</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full p-2 border border-gray-300 rounded font-montserrat"
-                  placeholder="Váš e-mail"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block font-montserrat text-gray-700 mb-1">Zpráva</label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full p-2 border border-gray-300 rounded font-montserrat"
-                  placeholder="Vaše zpráva"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="bg-wine-burgundy text-white px-6 py-2 rounded font-montserrat hover:bg-wine-red transition"
-              >
-                Odeslat zprávu
-              </button>
-            </form>
-          </div>
-
-          <div>
-            <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4">
-              Kontaktní údaje
-            </h2>
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
+          <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
+            Kontaktní údaje
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10">
             <div className="font-montserrat space-y-6">
               <div className="flex items-start gap-4">
                 <div className="bg-wine-cream p-3 rounded-full">
@@ -132,7 +91,7 @@ export default function Kontakt() {
               </div>
             </div>
 
-            <div className="mt-8">
+            <div>
               <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-4">
                 Kde nás najdete
               </h3>
