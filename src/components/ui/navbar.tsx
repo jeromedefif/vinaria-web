@@ -41,7 +41,7 @@ export default function Navbar() {
                   pathname === '/obchodni-zastupce' ? 'text-wine-burgundy' : ''
                 }`}
               >
-                <span>Obchodní zástupce</span>
+                <span>Rychlý kontakt</span>
                 <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
                   pathname === '/obchodni-zastupce' ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}></span>
@@ -113,7 +113,7 @@ export default function Navbar() {
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <span>Obchodní zástupce</span>
+              <span>Rychlý kontakt</span>
               <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
                 pathname === '/obchodni-zastupce' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
               }`}></span>

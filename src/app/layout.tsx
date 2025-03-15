@@ -1,19 +1,13 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Playfair_Display, Montserrat } from 'next/font/google'
+import { Inter } from 'next/font/google'
+import CookieConsent from '@/components/ui/cookie-consent'
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-playfair',
-})
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-montserrat',
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
@@ -27,9 +21,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="cs" className={`${playfair.variable} ${montserrat.variable}`}>
-      <body className={montserrat.className}>
+    <html lang="cs" className={`${inter.variable}`}>
+      <body className={inter.className}>
         {children}
+        <CookieConsent />
       </body>
     </html>
   )

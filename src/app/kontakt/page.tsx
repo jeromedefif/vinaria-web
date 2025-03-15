@@ -37,7 +37,7 @@ export default function Kontakt() {
                 className="inline-flex items-center gap-2 bg-wine-gold text-wine-burgundy font-montserrat font-medium px-6 py-3 rounded-md"
               >
                 <Users size={20} />
-                <span>Kontaktovat obchodního zástupce</span>
+                <span>Kontaktovat obchodního manažera</span>
                 <ArrowRight size={16} />
               </Link>
             </motion.div>

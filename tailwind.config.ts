@@ -15,8 +15,8 @@ const config: Config = {
         'wine-cream': '#F5F1E7',
       },
       fontFamily: {
-        'playfair': ['var(--font-playfair)'],
-        'montserrat': ['var(--font-montserrat)'],
+        'sans': ['var(--font-inter)'],
+        'inter': ['var(--font-inter)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

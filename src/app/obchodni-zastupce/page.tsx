@@ -45,10 +45,7 @@ export default function ObchodniZastupce() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="font-playfair text-3xl md:text-4xl font-bold text-wine-burgundy mb-3">
-            Váš obchodní zástupce
-          </h1>
-          <p className="font-montserrat text-xl text-gray-700 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             První krok k úspěšné spolupráci začíná u našeho obchodního manažera,
             který je připraven vám pomoci se vším, co potřebujete.
           </p>
@@ -64,23 +61,26 @@ export default function ObchodniZastupce() {
           <div className="md:flex">
             <div className="md:w-1/3 bg-gradient-to-b from-wine-burgundy to-wine-red text-white p-10 flex flex-col justify-center items-center">
               <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-wine-gold shadow-lg">
-                {/* Zde by ideálně byla fotografie obchodního manažera */}
-                <div className="absolute inset-0 flex items-center justify-center bg-wine-red">
-                  <span className="text-6xl font-bold">RF</span>
-                </div>
+                <Image
+                  src="/images/selfie.jpeg"
+                  alt="Ing. Roman Fiala - Obchodní manažer"
+                  fill
+                  className="object-cover scale-[1]"
+                  priority
+                />
               </div>
 
-              <h2 className="font-playfair text-2xl font-bold mb-1">Ing. Roman Fiala</h2>
-              <p className="font-montserrat mb-6">Obchodní manažer pro ČR</p>
+              <h2 className="text-2xl font-bold mb-1">Ing. Roman Fiala</h2>
+              <p className="mb-6">Obchodní manažer pro ČR</p>
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-2"
+                className="mt-2 w-full"
               >
                 <a
                   href="tel:+420734720994"
-                  className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-6 py-3 rounded-full font-medium hover:bg-white hover:text-wine-burgundy transition shadow-md"
+                  className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-6 py-3 rounded-full font-medium hover:bg-white hover:text-wine-burgundy transition shadow-md w-full"
                 >
                   <Phone size={20} />
                   <span>+420 734 720 994</span>
@@ -90,11 +90,11 @@ export default function ObchodniZastupce() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-4"
+                className="mt-4 w-full"
               >
                 <a
                   href="mailto:fiala@vinaria.cz"
-                  className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-6 py-3 rounded-full font-medium hover:bg-white hover:text-wine-burgundy transition shadow-md"
+                  className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-6 py-3 rounded-full font-medium hover:bg-white hover:text-wine-burgundy transition shadow-md w-full"
                 >
                   <Mail size={20} />
                   <span>fiala@vinaria.cz</span>
@@ -103,8 +103,8 @@ export default function ObchodniZastupce() {
             </div>
 
             <div className="md:w-2/3 p-10">
-              <h3 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
-                Jak se spojit s obchodním zástupcem
+              <h3 className="text-2xl font-bold text-wine-burgundy mb-6 mt-0">
+                Co preferuji při prvním kontaktu:
               </h3>
 
               <div className="grid md:grid-cols-2 gap-8">
@@ -116,13 +116,13 @@ export default function ObchodniZastupce() {
                     <Phone size={22} className="text-white" />
                   </div>
                   <div>
-                    <h4 className="font-playfair font-bold text-lg mb-1">Telefonicky</h4>
-                    <p className="font-montserrat text-gray-700 mb-3">
+                    <h4 className="font-bold text-lg mb-1">Telefonický rozhovor</h4>
+                    <p className="text-gray-700 mb-3">
                       Nejrychlejší způsob pro první kontakt. K dispozici v pracovních dnech 8:00-16:00.
                     </p>
                     <a
                       href="tel:+420734720994"
-                      className="font-montserrat text-lg font-semibold text-wine-burgundy hover:text-wine-red transition-colors flex items-center"
+                      className="text-lg font-semibold text-wine-burgundy hover:text-wine-red transition-colors flex items-center"
                     >
                       <Phone size={16} className="mr-2" />
                       +420 734 720 994
@@ -138,13 +138,13 @@ export default function ObchodniZastupce() {
                     <Mail size={22} className="text-white" />
                   </div>
                   <div>
-                    <h4 className="font-playfair font-bold text-lg mb-1">E-mailem</h4>
-                    <p className="font-montserrat text-gray-700 mb-3">
+                    <h4 className="font-bold text-lg mb-1">E-mailem</h4>
+                    <p className="text-gray-700 mb-3">
                       Pošlete nám e-mail s vaším požadavkem a ozveme se zpět do 24 hodin.
                     </p>
                     <a
                       href="mailto:fiala@vinaria.cz"
-                      className="font-montserrat text-lg font-semibold text-wine-burgundy hover:text-wine-red transition-colors flex items-center"
+                      className="text-lg font-semibold text-wine-burgundy hover:text-wine-red transition-colors flex items-center"
                     >
                       <Mail size={16} className="mr-2" />
                       fiala@vinaria.cz
@@ -160,11 +160,13 @@ export default function ObchodniZastupce() {
                     <Building size={22} className="text-white" />
                   </div>
                   <div>
-                    <h4 className="font-playfair font-bold text-lg mb-1">Naše sídlo</h4>
-                    <p className="font-montserrat text-gray-700">
+                    <h4 className="font-bold text-lg mb-1">Naše sídlo</h4>
+                    <p className="text-gray-700">
                       VINARIA s.r.o.<br />
                       Jugoslávská 868/4a<br />
-                      613 00 Brno
+                      613 00 Brno<br />
+                      po-pá 9:00-15:00<br />
+                      <b>Pouze velkoobchodní prodej</b>
                     </p>
                   </div>
                 </motion.div>
@@ -176,16 +178,16 @@ export default function ObchodniZastupce() {
                     href="https://www.vinaria.cz"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-montserrat flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-md text-wine-burgundy hover:bg-gray-100 transition"
+                    className="flex items-center justify-center gap-2 bg-gray-50 px-6 py-3 rounded-lg text-wine-burgundy hover:bg-gray-100 transition shadow-sm"
                   >
                     <Globe size={18} className="text-wine-gold" />
-                    <span className="font-medium">Prezentace: www.vinaria.cz</span>
+                    <span className="font-medium">www.vinaria.cz</span>
                   </a>
                   <a
-                    href="https://www.beginy.cz/"
+                    href="https://www.beginy.cz/login"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-montserrat flex items-center gap-2 bg-wine-cream px-4 py-2 rounded-md text-wine-burgundy hover:bg-wine-cream/80 transition"
+                    className="flex items-center justify-center gap-2 bg-wine-cream px-6 py-3 rounded-lg text-wine-burgundy hover:bg-wine-cream/80 transition shadow-sm"
                   >
                     <ShoppingBag size={18} className="text-wine-gold" />
                     <span className="font-medium">B2B portál: www.beginy.cz</span>
@@ -203,18 +205,18 @@ export default function ObchodniZastupce() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="bg-gradient-to-r from-wine-burgundy to-wine-red rounded-xl p-10 text-center text-white shadow-xl mb-16"
         >
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Přistupte k našemu B2B portálu
           </h2>
-          <p className="font-montserrat mb-8 max-w-3xl mx-auto opacity-90">
+          <p className="mb-8 max-w-3xl mx-auto opacity-90">
             Zaregistrujte se do našeho B2B systému a získejte přístup ke kompletnímu sortimentu,
-            a možnosti online objednávek pro vaši firmu.
+            ceníkům a možnosti online objednávek pro vaši firmu.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a
                 href="https://www.beginy.cz/register"
-                className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-8 py-4 rounded-lg font-medium hover:bg-white transition shadow-md"
+                className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-8 py-3 rounded-lg font-medium hover:bg-white transition shadow-md"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -233,7 +235,7 @@ export default function ObchodniZastupce() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-white rounded-xl shadow-lg p-8"
           >
-            <h3 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6 flex items-center">
+            <h3 className="text-2xl font-bold text-wine-burgundy mb-6 flex items-center">
               <FileCheck size={26} className="mr-3 text-wine-gold" />
               Postup registrace do B2B systému
             </h3>
@@ -242,8 +244,8 @@ export default function ObchodniZastupce() {
               <li className="flex gap-4">
                 <div className="flex-shrink-0 bg-gradient-to-br from-wine-burgundy to-wine-red text-white w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md">1</div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Kontaktujte obchodního zástupce</h4>
-                  <p className="font-montserrat text-gray-700">
+                  <h4 className="font-bold text-lg">Kontaktujte obchodního manažera</h4>
+                  <p className="text-gray-700">
                     Telefonicky nebo e-mailem nás informujte o vašem zájmu o spolupráci.
                   </p>
                 </div>
@@ -252,8 +254,8 @@ export default function ObchodniZastupce() {
               <li className="flex gap-4">
                 <div className="flex-shrink-0 bg-gradient-to-br from-wine-burgundy to-wine-red text-white w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md">2</div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Obdržíte přístupové údaje</h4>
-                  <p className="font-montserrat text-gray-700">
+                  <h4 className="font-bold text-lg">Obdržíte přístupové údaje</h4>
+                  <p className="text-gray-700">
                     Po dohodě vám zřídíme přístup do B2B portálu s kompletní nabídkou.
                   </p>
                 </div>
@@ -262,8 +264,8 @@ export default function ObchodniZastupce() {
               <li className="flex gap-4">
                 <div className="flex-shrink-0 bg-gradient-to-br from-wine-burgundy to-wine-red text-white w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md">3</div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Začněte objednávat</h4>
-                  <p className="font-montserrat text-gray-700">
+                  <h4 className="font-bold text-lg">Začněte objednávat</h4>
+                  <p className="text-gray-700">
                     V B2B portálu můžete snadno prohlížet aktuální sortiment, dostupnost a zadávat objednávky.
                   </p>
                 </div>
@@ -273,7 +275,7 @@ export default function ObchodniZastupce() {
             <div className="mt-8 pt-4 border-t border-gray-200">
               <div className="flex items-start gap-3 bg-blue-50 p-4 rounded-lg">
                 <Info size={22} className="flex-shrink-0 text-blue-600 mt-1" />
-                <p className="font-montserrat text-sm text-gray-700">
+                <p className="text-sm text-gray-700">
                   <strong>Poznámka:</strong> B2B portál je určen výhradně pro firemní zákazníky
                   (vinotéky, vinárny, restaurace, hotely a distribuční sítě). Neposkytujeme
                   přístup koncovým zákazníkům.
@@ -288,7 +290,7 @@ export default function ObchodniZastupce() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-white rounded-xl shadow-lg p-8"
           >
-            <h3 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
+            <h3 className="text-2xl font-bold text-wine-burgundy mb-6">
               Výhody spolupráce s námi
             </h3>
 
@@ -298,8 +300,8 @@ export default function ObchodniZastupce() {
                   <CheckCircle size={22} className="text-wine-gold" />
                 </div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Kvalitní produkty</h4>
-                  <p className="font-montserrat text-gray-700">
+                  <h4 className="font-bold text-lg">Kvalitní produkty</h4>
+                  <p className="text-gray-700">
                     Nabízíme prověřená vína a nápoje od předních evropských vinařů a producentů z třetích zemí.
                   </p>
                 </div>
@@ -310,8 +312,8 @@ export default function ObchodniZastupce() {
                   <CheckCircle size={22} className="text-wine-gold" />
                 </div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Flexibilní logistika</h4>
-                  <p className="font-montserrat text-gray-700">
+                  <h4 className="font-bold text-lg">Flexibilní logistika</h4>
+                  <p className="text-gray-700">
                     Zajistíme pravidelné dodávky po celé ČR s možností přizpůsobení vašim požadavkům.
                   </p>
                 </div>
@@ -322,8 +324,8 @@ export default function ObchodniZastupce() {
                   <CheckCircle size={22} className="text-wine-gold" />
                 </div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Komplexní sortiment</h4>
-                  <p className="font-montserrat text-gray-700">
+                  <h4 className="font-bold text-lg">Komplexní sortiment</h4>
+                  <p className="text-gray-700">
                     Kromě vín a nápojů nabízíme široký sortiment obalů a potravinářských plynů.
                   </p>
                 </div>
@@ -334,9 +336,9 @@ export default function ObchodniZastupce() {
                   <CheckCircle size={22} className="text-wine-gold" />
                 </div>
                 <div>
-                  <h4 className="font-playfair font-bold text-lg">Osobní přístup</h4>
-                  <p className="font-montserrat text-gray-700">
-                    Váš obchodní zástupce je vám vždy k dispozici pro radu, pomoc a optimalizaci nabídky.
+                  <h4 className="font-bold text-lg">Osobní přístup</h4>
+                  <p className="text-gray-700">
+                    Váš obchodní manažer je vám vždy k dispozici pro radu, pomoc a optimalizaci nabídky.
                   </p>
                 </div>
               </li>
@@ -353,26 +355,26 @@ export default function ObchodniZastupce() {
         >
           <div className="grid md:grid-cols-2 gap-10">
             <div>
-              <h3 className="font-playfair text-2xl font-bold text-wine-burgundy mb-4 flex items-center">
+              <h3 className="text-2xl font-bold text-wine-burgundy mb-4 flex items-center">
                 <MessageSquare size={24} className="mr-2 text-wine-gold" />
                 Napište mi přímo
               </h3>
-              <p className="font-montserrat text-gray-700 mb-6">
+              <p className="text-gray-700 mb-6">
                 Máte dotaz ohledně našich produktů nebo služeb? Vyplňte krátký formulář a já se vám co nejdříve ozvu zpět s nabídkou šitou na míru vašim potřebám.
               </p>
 
               <div className="space-y-5 mb-8">
                 <div className="flex items-center gap-3">
                   <Clock size={20} className="text-wine-gold" />
-                  <p className="font-montserrat">Odpovídám do 24 hodin</p>
+                  <p>Odpovídám do 24 hodin</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle size={20} className="text-wine-gold" />
-                  <p className="font-montserrat">Nabídka přizpůsobená vašim potřebám</p>
+                  <p>Nabídka přizpůsobená vašim potřebám</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle size={20} className="text-wine-gold" />
-                  <p className="font-montserrat">Osobní konzultace možná</p>
+                  <p>Osobní konzultace možná</p>
                 </div>
               </div>
 
@@ -380,7 +382,7 @@ export default function ObchodniZastupce() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a
                     href="tel:+420734720994"
-                    className="flex items-center justify-center gap-2 bg-wine-burgundy text-white px-6 py-4 rounded-lg font-medium hover:bg-wine-red transition shadow-md"
+                    className="flex items-center justify-center gap-2 bg-wine-burgundy text-white px-6 py-3 rounded-lg font-medium hover:bg-wine-red transition shadow-md"
                   >
                     <Phone size={18} />
                     <span>+420 734 720 994</span>
@@ -389,7 +391,7 @@ export default function ObchodniZastupce() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a
                     href="mailto:fiala@vinaria.cz"
-                    className="flex items-center justify-center gap-2 border-2 border-wine-burgundy text-wine-burgundy px-6 py-4 rounded-lg font-medium hover:bg-wine-burgundy hover:text-white transition"
+                    className="flex items-center justify-center gap-2 border-2 border-wine-burgundy text-wine-burgundy px-6 py-3 rounded-lg font-medium hover:bg-wine-burgundy hover:text-white transition"
                   >
                     <Mail size={18} />
                     <span>fiala@vinaria.cz</span>
@@ -401,7 +403,7 @@ export default function ObchodniZastupce() {
             <div>
               <form onSubmit={handleSubmit} className="bg-gray-50 p-6 rounded-lg">
                 <div className="mb-4">
-                  <label htmlFor="name" className="block font-montserrat text-gray-700 mb-2 font-medium">
+                  <label htmlFor="name" className="block text-gray-700 mb-2 font-medium">
                     Jméno a příjmení *
                   </label>
                   <div className="relative">
@@ -415,14 +417,14 @@ export default function ObchodniZastupce() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg font-montserrat focus:ring-wine-burgundy focus:border-wine-burgundy"
+                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-wine-burgundy focus:border-wine-burgundy"
                       placeholder="Vaše jméno"
                     />
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="email" className="block font-montserrat text-gray-700 mb-2 font-medium">
+                  <label htmlFor="email" className="block text-gray-700 mb-2 font-medium">
                     E-mail *
                   </label>
                   <div className="relative">
@@ -436,14 +438,14 @@ export default function ObchodniZastupce() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg font-montserrat focus:ring-wine-burgundy focus:border-wine-burgundy"
+                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-wine-burgundy focus:border-wine-burgundy"
                       placeholder="Váš e-mail"
                     />
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="company" className="block font-montserrat text-gray-700 mb-2 font-medium">
+                  <label htmlFor="company" className="block text-gray-700 mb-2 font-medium">
                     Společnost *
                   </label>
                   <div className="relative">
@@ -457,14 +459,14 @@ export default function ObchodniZastupce() {
                       value={formData.company}
                       onChange={handleInputChange}
                       required
-                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg font-montserrat focus:ring-wine-burgundy focus:border-wine-burgundy"
+                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-wine-burgundy focus:border-wine-burgundy"
                       placeholder="Název vaší společnosti"
                     />
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block font-montserrat text-gray-700 mb-2 font-medium">
+                  <label htmlFor="message" className="block text-gray-700 mb-2 font-medium">
                     Zpráva *
                   </label>
                   <div className="relative">
@@ -478,7 +480,7 @@ export default function ObchodniZastupce() {
                       onChange={handleInputChange}
                       required
                       rows={4}
-                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg font-montserrat focus:ring-wine-burgundy focus:border-wine-burgundy"
+                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-wine-burgundy focus:border-wine-burgundy"
                       placeholder="Vaše zpráva nebo dotaz..."
                     ></textarea>
                   </div>
@@ -488,7 +490,7 @@ export default function ObchodniZastupce() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   type="submit"
-                  className="w-full bg-wine-burgundy text-white p-3 rounded-lg font-montserrat font-medium flex items-center justify-center gap-2 hover:bg-wine-red transition shadow-md"
+                  className="w-full bg-wine-burgundy text-white p-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-wine-red transition shadow-md"
                 >
                   <Send size={18} />
                   Odeslat zprávu
