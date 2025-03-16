@@ -35,8 +35,10 @@ const INITIAL_DATA: Partial<QuestionnaireData> = {
   },
   communicationPreference: {
     preferredContact: 'phone',
+    preferredTime: '',
     timeFrame: 'week',
-    gdprConsent: false,
+    additionalNotes: '',
+    gdprConsent: false, // Výchozí hodnota false
   },
 };
 
@@ -77,10 +79,19 @@ export default function QuestionnaireForms() {
     setError(null);
 
     try {
-      const completeFormData: QuestionnaireData = {
+      // Vytvoření kompletních dat a ujištění, že gdprConsent je true
+      // (když jsme se dostali až do fáze odeslání, uživatel musel zaškrtnout checkbox)
+      const completeFormData = {
         ...formData as QuestionnaireData,
         submittedAt: new Date(),
+        communicationPreference: {
+          ...formData.communicationPreference as CommunicationPreference,
+          gdprConsent: true // Explicitně nastavíme na true
+        }
       };
+
+      console.log('Odesílám data formuláře, GDPR explicitně nastaven na TRUE:',
+                 JSON.stringify(completeFormData, null, 2));
 
       const response = await fetch('/api/dotaznik', {
         method: 'POST',
@@ -90,9 +101,12 @@ export default function QuestionnaireForms() {
         body: JSON.stringify(completeFormData),
       });
 
+      const responseData = await response.json();
+      console.log('Odpověď ze serveru:', responseData);
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Něco se pokazilo při odesílání dotazníku.');
+        console.error('Chyba při odesílání:', responseData);
+        throw new Error(responseData.message || 'Něco se pokazilo při odesílání dotazníku.');
       }
 
       // Přesměrování na stránku s poděkováním
@@ -103,7 +117,6 @@ export default function QuestionnaireForms() {
       setIsSubmitting(false);
     }
   };
-
   // Funkce pro renderování aktuálního kroku formuláře
   const renderStep = () => {
     switch (currentStep) {

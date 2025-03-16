@@ -1,0 +1,92 @@
+[
+  {
+    "timestamp": "2025-03-16T20:19:48.997Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": "12345678"
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "10 let",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "pet",
+        "revova"
+      ],
+      "originCountries": [
+        "moldavie",
+        "cesko"
+      ],
+      "monthlyVolume": "50-200l",
+      "preferredPackaging": [
+        "keg"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "kvalita",
+        "cena"
+      ],
+      "specialRequirements": "Závoz každých 14 dnů"
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "timeFrame": "week",
+      "gdprConsent": true,
+      "preferredTime": "Dopolendne"
+    },
+    "submittedAt": "2025-03-16T20:19:48.918Z"
+  },
+  {
+    "timestamp": "2025-03-16T20:56:43.221Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": ""
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "5 let",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "revova",
+        "napoje"
+      ],
+      "originCountries": [
+        "cesko",
+        "moldavie"
+      ],
+      "monthlyVolume": "200-500l",
+      "preferredPackaging": [
+        "keg",
+        "bib"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "kvalita",
+        "cena"
+      ],
+      "specialRequirements": "Poznámka specíální požadavek na dodavetele."
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "preferredTime": "",
+      "timeFrame": "week",
+      "additionalNotes": "",
+      "gdprConsent": true
+    },
+    "submittedAt": "2025-03-16T20:56:42.375Z"
+  }
+]
