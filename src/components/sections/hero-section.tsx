@@ -38,12 +38,12 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <Link
-              href="/katalog"
-              className="font-montserrat bg-wine-gold text-wine-burgundy px-8 py-3 rounded text-lg font-medium transition hover:bg-wine-gold/90"
-            >
-              Katalog vín a nápojů
-            </Link>
+          <Link
+href="/obchodni-zastupce"
+className="font-montserrat bg-wine-gold text-wine-burgundy px-8 py-3 rounded text-lg font-medium transition hover:bg-wine-gold/90"
+>
+Zahájit spolupráci
+</Link>
             <a
               href="https://www.beginy.cz/login"
               className="font-montserrat border-2 border-white text-white px-8 py-3 rounded text-lg font-medium transition hover:bg-white/10"

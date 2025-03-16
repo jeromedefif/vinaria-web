@@ -41,7 +41,7 @@ export default function Navbar() {
                   pathname === '/obchodni-zastupce' ? 'text-wine-burgundy' : ''
                 }`}
               >
-                <span>Rychlý kontakt</span>
+                <span>Zahájit spolupráci</span>
                 <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
                   pathname === '/obchodni-zastupce' ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}></span>

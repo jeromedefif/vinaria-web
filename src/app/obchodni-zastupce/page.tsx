@@ -5,7 +5,7 @@ import Footer from '@/components/ui/footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Calendar, FileCheck, Building, ArrowRight, Info, CheckCircle, FileText } from 'lucide-react';
+import { Phone, Mail, Users, Calendar, FileCheck, Building, ArrowRight, Info, CheckCircle, FileText } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ObchodniZastupce() {
@@ -201,12 +201,12 @@ export default function ObchodniZastupce() {
           </div>
         </motion.div>
 
-        {/* B2B registrační banner - přesunutý nad sekce postupu registrace a výhod */}
+        {/* B2B registrační banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-gradient-to-r from-wine-burgundy to-wine-red rounded-xl p-10 text-center text-white shadow-xl mb-16"
+          className="bg-gradient-to-r from-wine-burgundy to-wine-red rounded-xl p-10 text-center text-white shadow-xl mb-6"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Vyzkoušejte náš B2B portál - beginy.cz
@@ -239,126 +239,15 @@ export default function ObchodniZastupce() {
           </div>
         </motion.div>
 
-        {/* Registrace a spolupráce */}
-        <div className="grid md:grid-cols-2 gap-10 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-white rounded-xl shadow-lg p-8"
-          >
-            <h3 className="text-2xl font-bold text-wine-burgundy mb-6 flex items-center">
-              <FileCheck size={26} className="mr-3 text-wine-gold" />
-              Postup registrace do B2B systému
-            </h3>
-
-            <ol className="space-y-6">
-              <li className="flex gap-4">
-                <div className="flex-shrink-0 bg-gradient-to-br from-wine-burgundy to-wine-red text-white w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md">1</div>
-                <div>
-                  <h4 className="font-bold text-lg">Kontaktujte obchodního manažera</h4>
-                  <p className="text-gray-700">
-                    Telefonicky, e-mailem nebo pomocí dotazníku nás informujte o vašem zájmu o spolupráci.
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex gap-4">
-                <div className="flex-shrink-0 bg-gradient-to-br from-wine-burgundy to-wine-red text-white w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md">2</div>
-                <div>
-                  <h4 className="font-bold text-lg">Obdržíte přístupové údaje</h4>
-                  <p className="text-gray-700">
-                    Po dohodě vám zřídíme přístup do B2B portálu s kompletní nabídkou produktů.
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex gap-4">
-                <div className="flex-shrink-0 bg-gradient-to-br from-wine-burgundy to-wine-red text-white w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md">3</div>
-                <div>
-                  <h4 className="font-bold text-lg">Začněte objednávat</h4>
-                  <p className="text-gray-700">
-                    V B2B portálu můžete snadno prohlížet aktuální sortiment, dostupnost a zadávat objednávky.
-                  </p>
-                </div>
-              </li>
-            </ol>
-
-            <div className="mt-8 pt-4 border-t border-gray-200">
-              <div className="flex items-start gap-3 bg-blue-50 p-4 rounded-lg">
-                <Info size={22} className="flex-shrink-0 text-blue-600 mt-1" />
-                <p className="text-sm text-gray-700">
-                  <strong>Poznámka:</strong> B2B portál je určen výhradně pro firemní zákazníky
-                  (vinotéky, vinárny, restaurace, hotely a distribuční sítě). Neposkytujeme
-                  přístup koncovým zákazníkům.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-white rounded-xl shadow-lg p-8"
-          >
-            <h3 className="text-2xl font-bold text-wine-burgundy mb-6">
-              Výhody spolupráce s námi
-            </h3>
-
-            <ul className="space-y-5">
-              <li className="flex gap-3 items-start bg-wine-cream/30 p-4 rounded-lg">
-                <div className="flex-shrink-0 bg-white rounded-full p-1">
-                  <CheckCircle size={22} className="text-wine-gold" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">Kvalitní produkty</h4>
-                  <p className="text-gray-700">
-                    Nabízíme prověřená vína a nápoje od předních evropských vinařů a producentů z třetích zemí.
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex gap-3 items-start bg-wine-cream/30 p-4 rounded-lg">
-                <div className="flex-shrink-0 bg-white rounded-full p-1">
-                  <CheckCircle size={22} className="text-wine-gold" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">Flexibilní logistika</h4>
-                  <p className="text-gray-700">
-                    Zajistíme pravidelné dodávky po celé ČR s možností přizpůsobení vašim požadavkům.
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex gap-3 items-start bg-wine-cream/30 p-4 rounded-lg">
-                <div className="flex-shrink-0 bg-white rounded-full p-1">
-                  <CheckCircle size={22} className="text-wine-gold" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">Komplexní sortiment</h4>
-                  <p className="text-gray-700">
-                    Kromě vín a nápojů nabízíme široký sortiment obalů a potravinářských plynů.
-                  </p>
-                </div>
-              </li>
-
-              <li className="flex gap-3 items-start bg-wine-cream/30 p-4 rounded-lg">
-                <div className="flex-shrink-0 bg-white rounded-full p-1">
-                  <CheckCircle size={22} className="text-wine-gold" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">Osobní přístup</h4>
-                  <p className="text-gray-700">
-                    Váš obchodní manažer je vám vždy k dispozici pro radu, pomoc a optimalizaci nabídky.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </motion.div>
+        {/* Informační poznámka pod bannerem */}
+        <div className="mt-4 mb-16 flex items-start gap-3 bg-blue-50 p-4 rounded-lg">
+          <Info size={22} className="flex-shrink-0 text-blue-600 mt-1" />
+          <p className="text-sm text-gray-700">
+            <strong>Poznámka:</strong> B2B portál je určen výhradně pro firemní zákazníky
+            (vinotéky, vinárny, restaurace, hotely a distribuční sítě). Neposkytujeme
+            přístup koncovým zákazníkům.
+          </p>
         </div>
-
-
       </main>
       <Footer />
     </>
