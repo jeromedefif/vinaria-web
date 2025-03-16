@@ -113,7 +113,7 @@ export default function Navbar() {
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <span>Rychlý kontakt</span>
+              <span>Zahájit spolupráci</span>
               <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
                 pathname === '/obchodni-zastupce' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
               }`}></span>
