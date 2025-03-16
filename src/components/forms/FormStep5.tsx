@@ -22,22 +22,23 @@ export default function FormStep5({ data, updateData, onSubmit, onPrev, isSubmit
   }, [data]);
 
   // Handler pro změnu vstupů
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const { name, value, type } = e.target;
+  const checked = (e.target as HTMLInputElement).type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
+
+  setFormData({
+    ...formData,
+    [name]: type === 'checkbox' ? checked : value,
+  });
+
+  // Vyčistíme chybu pro dané pole při změně
+  if (errors[name as keyof CommunicationPreference]) {
+    setErrors({
+      ...errors,
+      [name]: undefined,
     });
-
-    // Vyčistíme chybu pro dané pole při změně
-    if (errors[name as keyof CommunicationPreference]) {
-      setErrors({
-        ...errors,
-        [name]: undefined,
-      });
-    }
-  };
-
+  }
+};
   // Validace formuláře
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof CommunicationPreference, string>> = {};
