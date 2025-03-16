@@ -26,8 +26,8 @@ export default function Success() {
           </h1>
 
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-            Vaše odpovědi byly úspěšně odeslány. Náš obchodní manažer Ing. Roman Fiala vás bude kontaktovat
-            do 24 hodin s nabídkou šitou přímo na míru vašim potřebám.
+            Vaše odpovědi byly úspěšně odeslány, děkujeme. Náš obchodní manažer Vás bude kontaktovat
+            s nabídkou šitou přímo na míru Vašim potřebám.
           </p>
 
           <div className="bg-gray-50 rounded-lg p-6 mb-8 max-w-md mx-auto">

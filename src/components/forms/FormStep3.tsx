@@ -248,7 +248,7 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
           <Globe size={18} className="text-wine-burgundy" />
           <span className="text-sm text-gray-600 font-medium">Vyberte všechny preferované země</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex items-center">
             <input
               type="checkbox"
@@ -259,7 +259,7 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
               className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
             />
             <label htmlFor="origin-cesko" className="ml-2 text-gray-700">
-              Česko / Morava
+              Moravská vína
             </label>
           </div>
           <div className="flex items-center">
@@ -272,46 +272,7 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
               className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
             />
             <label htmlFor="origin-rakousko" className="ml-2 text-gray-700">
-              Rakousko
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="origin-italie"
-              value="italie"
-              checked={formData.originCountries.includes('italie')}
-              onChange={handleOriginChange}
-              className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
-            />
-            <label htmlFor="origin-italie" className="ml-2 text-gray-700">
-              Itálie
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="origin-spanelsko"
-              value="spanelsko"
-              checked={formData.originCountries.includes('spanelsko')}
-              onChange={handleOriginChange}
-              className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
-            />
-            <label htmlFor="origin-spanelsko" className="ml-2 text-gray-700">
-              Španělsko
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="origin-francie"
-              value="francie"
-              checked={formData.originCountries.includes('francie')}
-              onChange={handleOriginChange}
-              className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
-            />
-            <label htmlFor="origin-francie" className="ml-2 text-gray-700">
-              Francie
+              Rakouská vína
             </label>
           </div>
           <div className="flex items-center">
@@ -324,7 +285,7 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
               className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
             />
             <label htmlFor="origin-moldavie" className="ml-2 text-gray-700">
-              Moldávie
+              Moldavská vína
             </label>
           </div>
           <div className="flex items-center">
@@ -337,7 +298,7 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
               className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
             />
             <label htmlFor="origin-other" className="ml-2 text-gray-700">
-              Jiné
+              Jiné země
             </label>
           </div>
         </div>
@@ -404,10 +365,6 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
         <label className="block text-gray-700 mb-3 font-medium">
           Preferované balení *
         </label>
-        <div className="flex items-center gap-1 mb-2">
-          <Package size={18} className="text-wine-burgundy" />
-          <span className="text-sm text-gray-600 font-medium">Vyberte všechny typy balení, které preferujete</span>
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex items-center">
             <input
@@ -435,33 +392,8 @@ export default function FormStep3({ data, updateData, onNext, onPrev }: FormStep
               Bag-in-Box (5L, 10L, 20L)
             </label>
           </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="packaging-pet"
-              value="pet"
-              checked={formData.preferredPackaging.includes('pet')}
-              onChange={handlePackagingChange}
-              className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
-            />
-            <label htmlFor="packaging-pet" className="ml-2 text-gray-700">
-              PET lahve (1L, 2L, 5L)
-            </label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="packaging-lahve"
-              value="lahve"
-              checked={formData.preferredPackaging.includes('lahve')}
-              onChange={handlePackagingChange}
-              className="w-4 h-4 text-wine-burgundy border-gray-300 rounded focus:ring-wine-burgundy"
-            />
-            <label htmlFor="packaging-lahve" className="ml-2 text-gray-700">
-              Skleněné lahve (0.75L)
-            </label>
-          </div>
         </div>
+
         {errors.preferredPackaging && (
           <p className="mt-1 text-sm text-red-600">{errors.preferredPackaging}</p>
         )}

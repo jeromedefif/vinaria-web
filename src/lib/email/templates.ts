@@ -119,7 +119,7 @@ Dobrý den, ${contactInfo.fullName},
 děkujeme za vyplnění dotazníku a váš zájem o spolupráci s VINARIA s.r.o.
 
 Váš požadavek jsme přijali a bude zpracován v nejbližším možném termínu.
-Náš obchodní manažer Ing. Roman Fiala vás bude kontaktovat do 24 hodin (v pracovní dny)
+Bude Vás kontaktovat obchodní manažer
 s nabídkou šitou na míru vašim potřebám.
 
 Pokud byste měli jakékoliv dotazy, neváhejte nás kontaktovat na:
@@ -131,5 +131,6 @@ Tým VINARIA s.r.o.
 Jugoslávská 868/4a
 613 00 Brno
 www.vinaria.cz
+www.beginy.cz
 `;
 }
