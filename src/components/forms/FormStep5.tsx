@@ -241,6 +241,18 @@ export default function FormStep5({ data, updateData, onSubmit, onPrev, isSubmit
         </p>
       </div>
 
+      <div style={{ display: 'none' }}>
+        <label htmlFor="website">Website (Nevyplňujte)</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Navigační tlačítka */}
       <div className="pt-4 flex justify-between">
         <button

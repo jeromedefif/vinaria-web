@@ -37,10 +37,11 @@ export interface Expectations {
 // Krok 5: Preference komunikace
 export interface CommunicationPreference {
   preferredContact: 'phone' | 'email' | 'osobne';
-  preferredTime?: string; // Preferovaný čas pro kontakt
+  preferredTime?: string;
   timeFrame: 'immediate' | 'week' | 'month' | 'quarter';
   additionalNotes?: string;
-  gdprConsent: boolean; // Souhlas se zpracováním osobních údajů
+  gdprConsent: boolean;
+  website?: string; // Honeypot pole
 }
 
 // Kompletní data dotazníku
@@ -51,6 +52,7 @@ export interface QuestionnaireData {
   expectations: Expectations;
   communicationPreference: CommunicationPreference;
   submittedAt: Date;
+  formCompletionTime?: number; // Doba vyplnění v ms
 }
 
 // Typ pro aktuální stav formuláře

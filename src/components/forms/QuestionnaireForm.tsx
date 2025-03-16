@@ -48,7 +48,7 @@ export default function QuestionnaireForms() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-
+  const [formStartTime] = useState<number>(Date.now());
   // Funkce pro aktualizaci formulářových dat
   const updateFormData = (stepData: Partial<QuestionnaireData>) => {
     setFormData(prevData => ({
@@ -75,20 +75,24 @@ export default function QuestionnaireForms() {
 
   // Funkce pro odeslání formuláře
   const submitForm = async () => {
-    setIsSubmitting(true);
-    setError(null);
+  setIsSubmitting(true);
+  setError(null);
 
-    try {
-      // Vytvoření kompletních dat a ujištění, že gdprConsent je true
-      // (když jsme se dostali až do fáze odeslání, uživatel musel zaškrtnout checkbox)
-      const completeFormData = {
-        ...formData as QuestionnaireData,
-        submittedAt: new Date(),
-        communicationPreference: {
-          ...formData.communicationPreference as CommunicationPreference,
-          gdprConsent: true // Explicitně nastavíme na true
-        }
-      };
+  try {
+    // Výpočet doby strávené vyplňováním formuláře
+    const formCompletionTime = Date.now() - formStartTime;
+
+    // Vytvoření kompletních dat
+    const completeFormData = {
+      ...formData as QuestionnaireData,
+      submittedAt: new Date(),
+      communicationPreference: {
+        ...formData.communicationPreference as CommunicationPreference,
+        gdprConsent: true
+      },
+      // Přidání informace o době vyplnění (v milisekundách)
+      formCompletionTime
+    };
 
       console.log('Odesílám data formuláře, GDPR explicitně nastaven na TRUE:',
                  JSON.stringify(completeFormData, null, 2));

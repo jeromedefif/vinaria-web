@@ -123,7 +123,7 @@ function validateFormData(data: any): { isValid: boolean; errors?: string[] } {
       data.communicationPreference.gdprConsent = true;
     }
   }
-  
+
   const isValid = errors.length === 0;
   console.log(`Validace ${isValid ? 'úspěšná' : 'neúspěšná'}, počet chyb: ${errors.length}`);
   if (!isValid) {
@@ -185,6 +185,30 @@ export async function POST(request: Request) {
     // Získání dat z požadavku
     const data = await request.json();
     console.log('Data přijata z formuláře');
+
+    // Kontrola honeypot pole
+    if (data.communicationPreference && data.communicationPreference.website) {
+      console.log('Detekován bot - honeypot pole bylo vyplněno');
+      return NextResponse.json(
+        {
+          success: true // Vracíme true, aby bot nemohl zjistit, že byl detekován
+        },
+        { status: 200 }
+      );
+    }
+
+    // VLOŽIT ČASOVOU KONTROLU ZDE
+    // Kontrola doby vyplnění - minimálně 10 sekund pro legitimní vyplnění
+    if (data.formCompletionTime && data.formCompletionTime < 10000) {
+      console.log('Podezřelé vyplnění - formulář vyplněn příliš rychle:', data.formCompletionTime, 'ms');
+      // Můžeme formulář odmítnout nebo označit jako potenciální spam
+      return NextResponse.json(
+        {
+          success: true // Vracíme true, aby bot nemohl zjistit, že byl detekován
+        },
+        { status: 200 }
+      );
+    }
 
     // Validace dat
     const validation = validateFormData(data);
