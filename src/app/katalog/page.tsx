@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 }
 
 // Funkce pro generování JSON-LD strukturovaných dat
-export function generateStructuredData() {
+function generateStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
