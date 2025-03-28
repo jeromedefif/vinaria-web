@@ -2,13 +2,76 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+
+// Definice navigačních položek - snadnější údržba
+const NAV_ITEMS = [
+  { href: '/obchodni-zastupce', label: 'Zahájit spolupráci' },
+  { href: '/katalog', label: 'Katalog vín' },
+  { href: '/o-nas', label: 'O nás' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+// Extrahovaná komponenta navigačního odkazu pro zamezení duplicity
+const NavLink = ({
+  href,
+  label,
+  isMobile = false,
+  isActive,
+  onClick
+}: {
+  href: string;
+  label: string;
+  isMobile?: boolean;
+  isActive: boolean;
+  onClick?: () => void;
+}) => {
+  const baseStyles = `font-montserrat text-gray-700 hover:text-wine-burgundy relative group transition duration-200 ${
+    isActive ? 'text-wine-burgundy' : ''
+  }`;
+
+  const mobileStyles = isMobile
+    ? 'block px-3 py-2 text-base font-medium'
+    : 'px-3 py-2 text-sm font-medium';
+
+  // Linková část pro desktop a mobil má jiný styl
+  const linkIndicator = isMobile ? (
+    <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
+      isActive ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+    }`}></span>
+  ) : (
+    <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
+      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+    }`}></span>
+  );
+
+  return (
+    <Link
+      href={href}
+      className={`${baseStyles} ${mobileStyles}`}
+      onClick={onClick}
+    >
+      <span>{label}</span>
+      {linkIndicator}
+    </Link>
+  );
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  // Memorizujeme callback pro lepší výkon
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
+  // Handler pro zavření menu při kliknutí na odkaz
+  const handleNavClick = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   return (
     <nav
@@ -26,7 +89,7 @@ export default function Navbar() {
                 width={120}
                 height={40}
                 className="mr-2"
-                priority // Přidáno pro zlepšení LCP
+                priority
               />
               <span className="font-playfair text-xl font-bold text-wine-burgundy">VINARIA</span>
             </Link>
@@ -35,50 +98,15 @@ export default function Navbar() {
           {/* Desktop menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <Link
-                href="/obchodni-zastupce"
-                className={`font-montserrat text-gray-700 hover:text-wine-burgundy px-3 py-2 text-sm font-medium relative group transition duration-200 ${
-                  pathname === '/obchodni-zastupce' ? 'text-wine-burgundy' : ''
-                }`}
-              >
-                <span>Zahájit spolupráci</span>
-                <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
-                  pathname === '/obchodni-zastupce' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-              </Link>
-              <Link
-                href="/katalog"
-                className={`font-montserrat text-gray-700 hover:text-wine-burgundy px-3 py-2 text-sm font-medium relative group transition duration-200 ${
-                  pathname === '/katalog' ? 'text-wine-burgundy' : ''
-                }`}
-              >
-                <span>Katalog vín</span>
-                <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
-                  pathname === '/katalog' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-              </Link>
-              <Link
-                href="/o-nas"
-                className={`font-montserrat text-gray-700 hover:text-wine-burgundy px-3 py-2 text-sm font-medium relative group transition duration-200 ${
-                  pathname === '/o-nas' ? 'text-wine-burgundy' : ''
-                }`}
-              >
-                <span>O nás</span>
-                <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
-                  pathname === '/o-nas' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-              </Link>
-              <Link
-                href="/kontakt"
-                className={`font-montserrat text-gray-700 hover:text-wine-burgundy px-3 py-2 text-sm font-medium relative group transition duration-200 ${
-                  pathname === '/kontakt' ? 'text-wine-burgundy' : ''
-                }`}
-              >
-                <span>Kontakt</span>
-                <span className={`absolute bottom-0 left-1/2 h-0.5 bg-wine-gold transform -translate-x-1/2 transition-all duration-300 ${
-                  pathname === '/kontakt' ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-              </Link>
+              {NAV_ITEMS.map((item) => (
+                <NavLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                  isActive={pathname === item.href}
+                />
+              ))}
+
               <a
                 href="https://www.beginy.cz"
                 className="font-montserrat bg-wine-gold text-wine-burgundy hover:bg-wine-gold/90 hover:shadow-md px-4 py-2 rounded-md text-sm font-medium shadow-sm transition-all duration-300"
@@ -93,8 +121,10 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-wine-burgundy focus:outline-none"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Zavřít menu" : "Otevřít menu"}
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -106,55 +136,17 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
-              href="/obchodni-zastupce"
-              className={`font-montserrat block text-gray-700 hover:text-wine-burgundy px-3 py-2 text-base font-medium relative group transition duration-200 ${
-                pathname === '/obchodni-zastupce' ? 'text-wine-burgundy' : ''
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span>Zahájit spolupráci</span>
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
-                pathname === '/obchodni-zastupce' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
-              }`}></span>
-            </Link>
-            <Link
-              href="/katalog"
-              className={`font-montserrat block text-gray-700 hover:text-wine-burgundy px-3 py-2 text-base font-medium relative group transition duration-200 ${
-                pathname === '/katalog' ? 'text-wine-burgundy' : ''
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span>Katalog vín</span>
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
-                pathname === '/katalog' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
-              }`}></span>
-            </Link>
-            <Link
-              href="/o-nas"
-              className={`font-montserrat block text-gray-700 hover:text-wine-burgundy px-3 py-2 text-base font-medium relative group transition duration-200 ${
-                pathname === '/o-nas' ? 'text-wine-burgundy' : ''
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span>O nás</span>
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
-                pathname === '/o-nas' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
-              }`}></span>
-            </Link>
-            <Link
-              href="/kontakt"
-              className={`font-montserrat block text-gray-700 hover:text-wine-burgundy px-3 py-2 text-base font-medium relative group transition duration-200 ${
-                pathname === '/kontakt' ? 'text-wine-burgundy' : ''
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span>Kontakt</span>
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-wine-gold transition-all duration-300 ${
-                pathname === '/kontakt' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
-              }`}></span>
-            </Link>
-              <a
+            {NAV_ITEMS.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                isMobile={true}
+                isActive={pathname === item.href}
+                onClick={handleNavClick}
+              />
+            ))}
+            <a
               href="https://www.beginy.cz"
               className="font-montserrat block bg-wine-gold text-wine-burgundy hover:bg-wine-gold/90 hover:shadow-md px-4 py-2 rounded-md text-base font-medium mt-4 mx-3 shadow-sm transition-all duration-300"
               target="_blank"
