@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 import { QuestionnaireData } from '@/types/questionnaire';
 import { generateEmailContent, generateConfirmationEmailContent } from './templates';
+import { businessManagerEmail } from './config';
 
 // Vytvoření instance Resend API klienta
 const resendApiKey = process.env.RESEND_API_KEY || '';
@@ -8,9 +9,6 @@ export const resend = new Resend(resendApiKey);
 
 // Výchozí e-mailová adresa odesílatele - používáme beginy.cz doménu
 export const defaultSender = process.env.EMAIL_FROM || 'info@beginy.cz';
-
-// Adresa obchodního manažera
-export const businessManagerEmail = process.env.BUSINESS_MANAGER_EMAIL || 'fiala@vinaria.cz';
 
 /**
  * Funkce pro odeslání emailu přes Resend API
