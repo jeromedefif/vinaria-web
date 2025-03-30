@@ -1,6 +1,11 @@
 import { Resend } from 'resend';
 import { QuestionnaireData } from '@/types/questionnaire';
-import { generateEmailContent, generateConfirmationEmailContent } from './templates';
+import {
+  generateEmailContent,
+  generateEmailHtmlContent,
+  generateConfirmationEmailContent,
+  generateConfirmationEmailHtmlContent
+} from './templates';
 import { businessManagerEmail } from './config';
 
 // Vytvoření instance Resend API klienta
@@ -66,13 +71,12 @@ export async function sendWithResend({
       subject
     };
 
-    // Přidáme buď text nebo html, ne obojí
-    if (html) {
-      emailData.html = html;
-    } else if (text) {
-      emailData.text = text;
-    } else {
-      // Pokud nemáme ani jedno, použijeme prázdný text
+    // Přidáme obsah emailu - text i HTML, pokud jsou k dispozici
+    if (text) emailData.text = text;
+    if (html) emailData.html = html;
+
+    // Pokud nemáme ani text ani HTML, použijeme prázdný text
+    if (!text && !html) {
       emailData.text = '';
     }
 
@@ -137,10 +141,12 @@ export async function sendQuestionnaireEmailWithResend(
       submittedAt: data.submittedAt
     });
 
-    // Příprava e-mailu pro obchodního manažera
-    let managerEmailContent;
+    // Příprava obsahu e-mailu pro obchodního manažera
+    let managerEmailText;
+    let managerEmailHtml;
     try {
-      managerEmailContent = generateEmailContent(data);
+      managerEmailText = generateEmailContent(data);
+      managerEmailHtml = generateEmailHtmlContent(data);
     } catch (err) {
       console.error('Chyba při generování obsahu e-mailu:', err);
       throw new Error('Nepodařilo se vygenerovat obsah e-mailu');
@@ -154,11 +160,12 @@ export async function sendQuestionnaireEmailWithResend(
     const customerName = data.contactInfo.fullName.replace(/\s+/g, '_');
     const attachmentFilename = `dotaznik_${customerName}_${timestampStr}.json`;
 
-    // Odeslání emailu s přílohou
+    // Odeslání emailu s přílohou a HTML obsahem
     const managerEmailResult = await sendWithResend({
       to: options?.to || businessManagerEmail,
       subject: options?.subject || 'Nový dotazník - zájemce o spolupráci',
-      text: managerEmailContent,
+      text: managerEmailText,
+      html: managerEmailHtml,
       replyTo: data.contactInfo.email,
       attachments: [
         {
@@ -180,11 +187,14 @@ export async function sendQuestionnaireEmailWithResend(
     let customerEmailSent = false;
     if (options?.sendConfirmation && data.contactInfo.email) {
       try {
-        const confirmationContent = generateConfirmationEmailContent(data);
+        const confirmationText = generateConfirmationEmailContent(data);
+        const confirmationHtml = generateConfirmationEmailHtmlContent(data);
+
         const customerEmailResult = await sendWithResend({
           to: data.contactInfo.email,
           subject: 'Potvrzení přijetí dotazníku - VINARIA s.r.o.',
-          text: confirmationContent
+          text: confirmationText,
+          html: confirmationHtml
         });
         customerEmailSent = customerEmailResult.success;
 
