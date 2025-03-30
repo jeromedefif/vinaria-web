@@ -1,53 +1,79 @@
-import { transporter, defaultSender, businessManagerEmail, testEmailConnection } from './config';
-import { EmailOptions, QuestionnaireEmailOptions } from './types';
+import { Resend } from 'resend';
 import { QuestionnaireData } from '@/types/questionnaire';
 import { generateEmailContent, generateConfirmationEmailContent } from './templates';
 
+// Vytvoření instance Resend API klienta
+const resendApiKey = process.env.RESEND_API_KEY || '';
+export const resend = new Resend(resendApiKey);
+
+// Výchozí e-mailová adresa odesílatele - používáme beginy.cz doménu
+export const defaultSender = process.env.EMAIL_FROM || 'info@beginy.cz';
+
+// Adresa obchodního manažera
+export const businessManagerEmail = process.env.BUSINESS_MANAGER_EMAIL || 'fiala@vinaria.cz';
+
 /**
- * Obecná funkce pro odesílání e-mailů
+ * Funkce pro odeslání emailu přes Resend API
  */
-export async function sendEmail(options: EmailOptions): Promise<{success: boolean, error?: string}> {
+export async function sendWithResend({
+  to,
+  subject,
+  text,
+  html,
+  from = defaultSender,
+  replyTo
+}: {
+  to: string | string[];
+  subject: string;
+  text?: string;
+  html?: string;
+  from?: string;
+  replyTo?: string;
+}) {
   try {
-    // Otestujeme připojení k emailovému serveru
-    const connectionOk = await testEmailConnection();
-    if (!connectionOk) {
-      console.error('Nepodařilo se připojit k emailovému serveru');
-      return {
-        success: false,
-        error: 'Nepodařilo se připojit k emailovému serveru. Kontaktujte nás prosím telefonicky.'
-      };
+    if (!resendApiKey) {
+      console.error('Chybí Resend API klíč');
+      return { success: false, error: 'Chybí konfigurace pro odesílání emailů' };
     }
 
-    const mailOptions = {
-      from: options.from || defaultSender,
-      to: options.to,
-      subject: options.subject,
-      text: options.text,
-      html: options.html,
-      replyTo: options.replyTo
-    };
+    console.log(`Odesílání e-mailu na adresu: ${to}`);
 
-    console.log(`Odesílání e-mailu na adresu: ${options.to}`);
-    const info = await transporter.sendMail(mailOptions);
-    console.log('E-mail úspěšně odeslán:', info.messageId);
+    const { data, error } = await resend.emails.send({
+      from,
+      to: Array.isArray(to) ? to : [to],
+      subject,
+      text,
+      html,
+      reply_to: replyTo
+    });
+
+    if (error) {
+      console.error('Chyba při odesílání e-mailu přes Resend:', error);
+      return { success: false, error: error.message };
+    }
+
+    console.log('E-mail úspěšně odeslán přes Resend:', data?.id);
     return { success: true };
   } catch (error) {
-    console.error('Chyba při odesílání e-mailu:', error);
+    console.error('Neočekávaná chyba při odesílání e-mailu přes Resend:', error);
     const errorMessage = error instanceof Error ? error.message : 'Neznámá chyba';
     return { success: false, error: errorMessage };
   }
 }
 
 /**
- * Funkce pro odeslání dotazníku obchodnímu manažerovi
- * a volitelně potvrzovacího e-mailu zákazníkovi
+ * Funkce pro odeslání dotazníku obchodnímu manažerovi přes Resend
  */
-export async function sendQuestionnaireEmail(
+export async function sendQuestionnaireEmailWithResend(
   data: QuestionnaireData,
-  options?: Partial<QuestionnaireEmailOptions>
+  options?: {
+    to?: string;
+    subject?: string;
+    sendConfirmation?: boolean;
+  }
 ): Promise<{success: boolean, customerEmailSent?: boolean, error?: string}> {
   try {
-    console.log('Odesílání dotazníkového e-mailu, data:', {
+    console.log('Odesílání dotazníkového e-mailu přes Resend, data:', {
       contactInfo: data.contactInfo,
       submittedAt: data.submittedAt
     });
@@ -61,7 +87,7 @@ export async function sendQuestionnaireEmail(
       throw new Error('Nepodařilo se vygenerovat obsah e-mailu');
     }
 
-    const managerEmailResult = await sendEmail({
+    const managerEmailResult = await sendWithResend({
       to: options?.to || businessManagerEmail,
       subject: options?.subject || 'Nový dotazník - zájemce o spolupráci',
       text: managerEmailContent,
@@ -81,7 +107,7 @@ export async function sendQuestionnaireEmail(
     if (options?.sendConfirmation && data.contactInfo.email) {
       try {
         const confirmationContent = generateConfirmationEmailContent(data);
-        const customerEmailResult = await sendEmail({
+        const customerEmailResult = await sendWithResend({
           to: data.contactInfo.email,
           subject: 'Potvrzení přijetí dotazníku - VINARIA s.r.o.',
           text: confirmationContent

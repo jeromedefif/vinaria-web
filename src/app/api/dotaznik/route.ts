@@ -3,7 +3,7 @@ import { QuestionnaireData } from '@/types/questionnaire';
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
-import { sendQuestionnaireEmail } from '@/lib/email/sender';
+import { sendQuestionnaireEmailWithResend } from '@/lib/email/resend';
 
 const writeFile = promisify(fs.writeFile);
 const mkdir = promisify(fs.mkdir);
@@ -177,7 +177,6 @@ async function logFormData(data: QuestionnaireData): Promise<boolean> {
 }
 
 // Hlavní handler pro HTTP POST požadavek
-// Hlavní handler pro HTTP POST požadavek
 export async function POST(request: Request) {
   try {
     console.log('POST požadavek na /api/dotaznik');
@@ -197,7 +196,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // VLOŽIT ČASOVOU KONTROLU ZDE
     // Kontrola doby vyplnění - minimálně 10 sekund pro legitimní vyplnění
     if (data.formCompletionTime && data.formCompletionTime < 10000) {
       console.log('Podezřelé vyplnění - formulář vyplněn příliš rychle:', data.formCompletionTime, 'ms');
@@ -235,8 +233,8 @@ export async function POST(request: Request) {
 
     console.log('Připraveno k odeslání e-mailu a uložení dat');
 
-    // Odeslání e-mailu pomocí Nodemailer
-    const emailResult = await sendQuestionnaireEmail(formData, {
+    // Odeslání e-mailu pomocí Resend
+    const emailResult = await sendQuestionnaireEmailWithResend(formData, {
       sendConfirmation: true // Odeslat potvrzovací e-mail zákazníkovi
     });
 

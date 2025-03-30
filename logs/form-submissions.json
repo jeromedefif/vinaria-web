@@ -172,5 +172,177 @@
     },
     "submittedAt": "2025-03-18T20:13:43.455Z",
     "formCompletionTime": 40102
+  },
+  {
+    "timestamp": "2025-03-30T20:47:07.750Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": ""
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "5 let",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "ovocna",
+        "napoje",
+        "pet"
+      ],
+      "originCountries": [
+        "moldavie"
+      ],
+      "monthlyVolume": "500-1000l",
+      "preferredPackaging": [
+        "keg"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "cena"
+      ]
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "preferredTime": "",
+      "timeFrame": "week",
+      "additionalNotes": "",
+      "gdprConsent": true
+    },
+    "submittedAt": "2025-03-30T20:47:07.669Z",
+    "formCompletionTime": 52273
+  },
+  {
+    "timestamp": "2025-03-30T20:52:51.319Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": ""
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "5 let",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "revova"
+      ],
+      "originCountries": [
+        "moldavie"
+      ],
+      "monthlyVolume": "500-1000l",
+      "preferredPackaging": [
+        "bib"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "logistika",
+        "cena"
+      ]
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "preferredTime": "",
+      "timeFrame": "week",
+      "additionalNotes": "",
+      "gdprConsent": true
+    },
+    "submittedAt": "2025-03-30T20:52:51.230Z",
+    "formCompletionTime": 39216
+  },
+  {
+    "timestamp": "2025-03-30T20:55:20.681Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": ""
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "5 let",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "revova"
+      ],
+      "originCountries": [
+        "moldavie"
+      ],
+      "monthlyVolume": "do50l",
+      "preferredPackaging": [
+        "keg"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "cena"
+      ]
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "preferredTime": "",
+      "timeFrame": "week",
+      "additionalNotes": "",
+      "gdprConsent": true
+    },
+    "submittedAt": "2025-03-30T20:55:20.630Z",
+    "formCompletionTime": 30113
+  },
+  {
+    "timestamp": "2025-03-30T21:14:49.642Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": ""
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "4 roky",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "ovocna",
+        "napoje"
+      ],
+      "originCountries": [
+        "moldavie"
+      ],
+      "monthlyVolume": "200-500l",
+      "preferredPackaging": [
+        "keg"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "kvalita"
+      ]
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "preferredTime": "",
+      "timeFrame": "week",
+      "additionalNotes": "",
+      "gdprConsent": true
+    },
+    "submittedAt": "2025-03-30T21:14:47.820Z",
+    "formCompletionTime": 35793
   }
 ]
