@@ -9,6 +9,12 @@ export interface EmailConfig {
     user: string;
     pass: string;
   };
+  tls?: {
+    rejectUnauthorized?: boolean;
+  };
+  connectionTimeout?: number;
+  maxConnections?: number;
+  maxMessages?: number;
 }
 
 // Základní struktura e-mailu

@@ -344,5 +344,47 @@
     },
     "submittedAt": "2025-03-30T21:14:47.820Z",
     "formCompletionTime": 35793
+  },
+  {
+    "timestamp": "2025-03-30T21:23:48.635Z",
+    "contactInfo": {
+      "fullName": "Roman Fiala",
+      "email": "roman.fiala@fifon.eu",
+      "phone": "+420734720994",
+      "companyName": "FIFON s.r.o.",
+      "ico": ""
+    },
+    "businessInfo": {
+      "businessType": "vinoteka",
+      "city": "Bojkovice",
+      "businessYears": "4",
+      "address": "Pod Skalkou 1070"
+    },
+    "productInterest": {
+      "wineTypes": [
+        "revova"
+      ],
+      "originCountries": [
+        "cesko"
+      ],
+      "monthlyVolume": "do50l",
+      "preferredPackaging": [
+        "keg"
+      ]
+    },
+    "expectations": {
+      "priorities": [
+        "cena"
+      ]
+    },
+    "communicationPreference": {
+      "preferredContact": "phone",
+      "preferredTime": "",
+      "timeFrame": "week",
+      "additionalNotes": "",
+      "gdprConsent": true
+    },
+    "submittedAt": "2025-03-30T21:23:47.073Z",
+    "formCompletionTime": 25283
   }
 ]
