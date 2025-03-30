@@ -11,6 +11,14 @@ export const resend = new Resend(resendApiKey);
 export const defaultSender = process.env.EMAIL_FROM || 'info@beginy.cz';
 
 /**
+ * Funkce pro vytvoření JSON přílohy s daty dotazníku
+ */
+function createFormDataAttachment(data: QuestionnaireData): string {
+  // Formátujeme JSON s odsazením pro lepší čitelnost
+  return JSON.stringify(data, null, 2);
+}
+
+/**
  * Funkce pro odeslání emailu přes Resend API
  */
 export async function sendWithResend({
@@ -19,7 +27,8 @@ export async function sendWithResend({
   text,
   html,
   from = defaultSender,
-  replyTo
+  replyTo,
+  attachments = []
 }: {
   to: string | string[];
   subject: string;
@@ -27,6 +36,7 @@ export async function sendWithResend({
   html?: string;
   from?: string;
   replyTo?: string;
+  attachments?: Array<{ filename: string; content: string | Buffer; }>;
 }) {
   try {
     if (!resendApiKey) {
@@ -44,6 +54,12 @@ export async function sendWithResend({
       html?: string;
       text?: string;
       reply_to?: string;
+      attachments?: Array<{
+        filename: string;
+        content: string;
+        content_type?: string;
+        content_disposition?: string;
+      }>;
     } = {
       from,
       to: Array.isArray(to) ? to : [to],
@@ -63,6 +79,28 @@ export async function sendWithResend({
     // Přidáme reply_to, pokud existuje
     if (replyTo) {
       emailData.reply_to = replyTo;
+    }
+
+    // Přidáme přílohy, pokud existují
+    if (attachments && attachments.length > 0) {
+      emailData.attachments = attachments.map(attachment => {
+        // Pokud je obsah Buffer, převedeme ho na Base64 string
+        let base64Content: string;
+
+        if (Buffer.isBuffer(attachment.content)) {
+          base64Content = attachment.content.toString('base64');
+        } else {
+          // Převedeme string na Buffer a pak na Base64
+          base64Content = Buffer.from(attachment.content).toString('base64');
+        }
+
+        return {
+          filename: attachment.filename,
+          content: base64Content,
+          content_type: attachment.filename.endsWith('.json') ? 'application/json' : 'text/plain',
+          content_disposition: 'attachment'
+        };
+      });
     }
 
     // @ts-ignore - Ignorujeme typovou chybu, protože víme, že naše data jsou správná
@@ -108,11 +146,26 @@ export async function sendQuestionnaireEmailWithResend(
       throw new Error('Nepodařilo se vygenerovat obsah e-mailu');
     }
 
+    // Vytvoření přílohy s JSON daty z formuláře
+    const formDataJson = createFormDataAttachment(data);
+
+    // Vytvoření názvu souboru s aktuálním datem a jménem zákazníka
+    const timestampStr = new Date().toISOString().replace(/[:.]/g, '-');
+    const customerName = data.contactInfo.fullName.replace(/\s+/g, '_');
+    const attachmentFilename = `dotaznik_${customerName}_${timestampStr}.json`;
+
+    // Odeslání emailu s přílohou
     const managerEmailResult = await sendWithResend({
       to: options?.to || businessManagerEmail,
       subject: options?.subject || 'Nový dotazník - zájemce o spolupráci',
       text: managerEmailContent,
-      replyTo: data.contactInfo.email
+      replyTo: data.contactInfo.email,
+      attachments: [
+        {
+          filename: attachmentFilename,
+          content: formDataJson
+        }
+      ]
     });
 
     if (!managerEmailResult.success) {
