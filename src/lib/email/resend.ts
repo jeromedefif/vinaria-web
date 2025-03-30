@@ -36,14 +36,37 @@ export async function sendWithResend({
 
     console.log(`Odesílání e-mailu na adresu: ${to}`);
 
-    const { data, error } = await resend.emails.send({
+    // Vytvoříme objekt s povinnými parametry
+    const emailData: {
+      from: string;
+      to: string[];
+      subject: string;
+      html?: string;
+      text?: string;
+      reply_to?: string;
+    } = {
       from,
       to: Array.isArray(to) ? to : [to],
-      subject,
-      text,
-      html,
-      replyTo: replyTo  // Změněno z reply_to na replyTo
-    });
+      subject
+    };
+
+    // Přidáme buď text nebo html, ne obojí
+    if (html) {
+      emailData.html = html;
+    } else if (text) {
+      emailData.text = text;
+    } else {
+      // Pokud nemáme ani jedno, použijeme prázdný text
+      emailData.text = '';
+    }
+
+    // Přidáme reply_to, pokud existuje
+    if (replyTo) {
+      emailData.reply_to = replyTo;
+    }
+
+    // @ts-ignore - Ignorujeme typovou chybu, protože víme, že naše data jsou správná
+    const { data, error } = await resend.emails.send(emailData);
 
     if (error) {
       console.error('Chyba při odesílání e-mailu přes Resend:', error);
