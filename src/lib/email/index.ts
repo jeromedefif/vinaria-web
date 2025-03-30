@@ -1,21 +1,5 @@
-// Exporty z původních modulů
-export * from './types';
-export * from './templates';
-export { EmailConfig, EmailOptions, QuestionnaireEmailOptions } from './types';
-
-// Exporty z config.ts
-export {
-  createTransporter,
-  transporter,
-  defaultSender as smtpDefaultSender,
-  businessManagerEmail,
-  testEmailConnection
-} from './config';
-
-// Exporty z resend.ts
-export {
-  resend,
-  sendWithResend,
-  sendQuestionnaireEmailWithResend,
-  defaultSender as resendDefaultSender
-} from './resend';
+// Export pouze nejnutnějších věcí z každého modulu
+export { generateEmailContent, generateConfirmationEmailContent } from './templates';
+export type { EmailConfig, EmailOptions, QuestionnaireEmailOptions } from './types';
+export { businessManagerEmail, testEmailConnection } from './config';
+export { sendQuestionnaireEmailWithResend } from './resend';
