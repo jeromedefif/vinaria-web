@@ -42,7 +42,7 @@ export async function sendWithResend({
       subject,
       text,
       html,
-      reply_to: replyTo
+      replyTo: replyTo  // Změněno z reply_to na replyTo
     });
 
     if (error) {
