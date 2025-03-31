@@ -98,7 +98,7 @@ export default function Navbar() {
                 {/* Název společnosti v burgundské barvě */}
                 <span className="font-playfair text-2xl font-bold text-wine-burgundy tracking-wide">VINARIA</span>
                 {/* Volitelně lze přidat slogan pod názvem */}
-                <span className="text-xs text-wine-red/80 font-medium hidden sm:block">Prémiová vína pro náročnou klientelu</span>
+                <span className="text-xs text-wine-red/80 font-medium hidden sm:block">Prémiová vína a nápoje pro všechny</span>
               </div>
             </Link>
           </div>
