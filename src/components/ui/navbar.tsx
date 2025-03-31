@@ -80,18 +80,26 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo a název spojené do jednoho bloku */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <Image
-                src="/images/logo.png"
-                alt="Vinaria logo"
-                width={120}
-                height={40}
-                className="mr-2"
-                priority
-              />
-              <span className="font-playfair text-xl font-bold text-wine-burgundy">VINARIA</span>
+              <div className="relative mr-3">
+                {/* Logo s jemným stínem pro vylepšení vzhledu */}
+                <Image
+                  src="/images/logo.png"
+                  alt="Vinaria logo"
+                  width={80}
+                  height={80}
+                  className="h-16 w-16 object-contain drop-shadow-sm"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                {/* Název společnosti v burgundské barvě */}
+                <span className="font-playfair text-2xl font-bold text-wine-burgundy tracking-wide">VINARIA</span>
+                {/* Volitelně lze přidat slogan pod názvem */}
+                <span className="text-xs text-wine-red/80 font-medium hidden sm:block">Prémiová vína pro náročnou klientelu</span>
+              </div>
             </Link>
           </div>
 
