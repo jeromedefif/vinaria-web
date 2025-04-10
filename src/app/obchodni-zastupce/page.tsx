@@ -48,7 +48,7 @@ export default function ObchodniZastupce() {
                 </div>
 
                 <h2 className="text-2xl font-bold mb-1">Ing. Roman Fiala</h2>
-                <p className="mb-6">Obchodní manažer pro ČR</p>
+                <p className="mb-6">obchodní manažer pro ČR</p>
               </div>
 
               <div className="w-full space-y-4">
