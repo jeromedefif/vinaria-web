@@ -19,23 +19,23 @@ export default function ONas() {
             </p>
             <p className="font-montserrat text-gray-700 mb-4">
               Za téměř dvě dekády působení na českém trhu jsme si vybudovali pověst spolehlivého partnera ve velkoobchodu s vínem.
-              Naší hlavní činností je provozování stáčírny vín, distribuce kvalitních zahraničních a moravských vín a výroba ostatních alkoholických nápojů.
+              Naší hlavní činností je distribuce kvalitních zahraničních a moravských vín a výroba ostatních alkoholických nápojů.
             </p>
             <p className="font-montserrat text-gray-700">
-              Hlavní náplní firmy VINARIA je provozování stáčírny vín – velkoobchodu s vínem a nápoji. Našimi zákazníky jsou
+              Hlavní náplní firmy VINARIA s.r.o. je velkoobchod s vínem a nápoji. Našimi zákazníky jsou
               distribuční sítě, vinaři, vinotéky, vinárny, restaurace a hotely.
             </p>
           </div>
           <div className="rounded-lg overflow-hidden h-64 md:h-auto">
-  <Image
-    src="/images/stary_sud.jpg"
-    alt="Vinný sklep VINARIA"
-    width={600}
-    height={400}
-    className="rounded-lg w-full h-full object-cover"
-    priority
-  />
-</div>
+            <Image
+              src="/images/stary_sud.jpg"
+              alt="Vinný sklep VINARIA"
+              width={600}
+              height={400}
+              className="rounded-lg w-full h-full object-cover"
+              priority
+            />
+          </div>
         </div>
 
         <div className="bg-wine-cream p-8 rounded-lg mb-12">
@@ -47,60 +47,51 @@ export default function ONas() {
           </p>
         </div>
 
-        <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
-          Co nabízíme
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div>
-            <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-4">Stáčírna vín</h3>
-            <p className="font-montserrat text-gray-700 mb-4">
-              Dovážíme nebalená vína v cisternách především z Rakouska, Moldávie, Itálie a Španělska. Standardně dodáváme
-              pro velkoodběratele kompletní analytický rozbor vín. Vína jsou před expedicí ošetřena svícovou filtrací o čistotě 0,5 µ.
-            </p>
-            <p className="font-montserrat text-gray-700">
-              Nebalená vína distribuujeme zabalená dle přání zákazníka po celé ČR, obvykle v závozech 1.800 – 24.000 litrů.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-playfair text-xl font-bold text-wine-burgundy mb-4">Velkoobchod vínem a nápoji</h3>
-            <p className="font-montserrat text-gray-700 mb-4">
-              Přicházíme s nabídkou balených (BAG-IN-BOX) a nebalených (KEG sudy) vín šitou přímo na míru pro vinotéky,
-              vinárny, vinné šenky, restaurace, hotely a jiná gastronomická zařízení.
-            </p>
-            <p className="font-montserrat text-gray-700">
-              Kromě vín nabízíme také široký sortiment ostatních alkoholických nápojů, ovocných vín, burčáků, svařáků, potravinářských plynů a PET lahví.
-            </p>
-          </div>
+        <div className="mb-12">
+          <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
+            Náš přístup k zákazníkům
+          </h2>
+          <p className="font-montserrat text-gray-700 mb-6">
+            Naší filozofií je dlouhodobě poskytovat produkty přesně podle potřeb našich klientů. Vyrábíme v přímé odezvě
+            na přání zákazníka a plníme až na základě konkrétních požadavků. Díky tomuto přístupu zaručujeme čerstvost
+            a kvalitu dodávaných produktů, spolu s maximální flexibilitou při uspokojování individuálních potřeb.
+          </p>
         </div>
 
-        <div className="bg-white border border-gray-200 p-8 rounded-lg shadow-sm">
+        <div className="mb-12">
           <h2 className="font-playfair text-2xl font-bold text-wine-burgundy mb-6">
-            Naše služby
+            Historie a milníky
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <h3 className="font-playfair font-bold text-lg mb-2 text-wine-burgundy">Pravidelný rozvoz</h3>
-              <p className="font-montserrat text-gray-700">
-                Objednaná vína přivezeme na vaši provozovnu dle jednotlivých rozvozových tras po celé ČR.
-              </p>
-            </div>
+          <div className="bg-white border border-gray-200 p-8 rounded-lg shadow-sm">
+            <p className="font-montserrat text-gray-700 mb-4">
+              Zakladatelé firmy přinesli do vinařského odvětví svěží pohled podložený ekonomickým vzděláním. Ředitel Michael Drápela
+              i obchodní manažer Roman Fiala působili před vstupem do světa vína v mezinárodním obchodě v segmentu automotive. Právě
+              tento netradiční přístup k tradičnímu odvětví umožnil firmě VINARIA realizovat řadu inovativních projektů.
+            </p>
 
-            <div>
-              <h3 className="font-playfair font-bold text-lg mb-2 text-wine-burgundy">KEG sudy</h3>
-              <p className="font-montserrat text-gray-700">
-                Pro distribuční sítě zapůjčujeme KEG sudy původem z Německa, osazeny standardně Flach fitinkem.
-              </p>
-            </div>
+            <p className="font-montserrat text-gray-700 mb-4">
+              Naše cesta byla lemována významnými milníky. V roce 2005 jsme zahájili dovoz a prodej jakostních nebalených vín ze zemí EU,
+              což zůstává součástí našeho portfolia dodnes. O tři roky později jsme obohatili český trh o španělské víno zrající 6 měsíců
+              v dubových sudech, které si udrželo popularitu celou dekádu. Rok 2009 se nesl ve znamení importu KEG sudů z Německa.
+            </p>
 
-            <div>
-              <h3 className="font-playfair font-bold text-lg mb-2 text-wine-burgundy">PET lahve</h3>
-              <p className="font-montserrat text-gray-700">
-                Zajistíme standardní dodávku PET lahví o objemech 1L, 1,5L, 2L a 5L pro zákazníky, kteří odebírají naše produkty.
-              </p>
-            </div>
+            <p className="font-montserrat text-gray-700 mb-4">
+              Rok 2010 přinesl nezapomenutelné řízené degustace v našich historických sklepích, které jsme organizovali pro bankovní
+              instituce za doprovodu houslového tria. V roce 2015 jsme navázali spolupráci s rakouským výrobcem a uvedli na český trh
+              sycené ovocné víno v plechovkách. O dva roky později jsme rozšířili naši nabídku o dovoz a prodej nebaleného dezertního
+              ovocného vína.
+            </p>
+
+            <p className="font-montserrat text-gray-700 mb-4">
+              Významný byl pro nás rok 2019, kdy jsme zajistili legislativní zázemí pro dovoz a prodej vína s extrakty konopí a současně
+              jsme zahájili výrobu ostatních alkoholických nápojů. Nejnověji, v roce 2024, jsme začali se sycením ostatního alkoholického nápoje.
+            </p>
+
+            <p className="font-montserrat text-gray-700">
+              Za dvě dekády působení jsme úspěšně překonali četné legislativní změny provázející náš obor a podařilo se nám zachovat si
+              optimismus a nadšení pro kvalitní vína, které rádi předáváme dál našim zákazníkům.
+            </p>
           </div>
         </div>
       </main>
