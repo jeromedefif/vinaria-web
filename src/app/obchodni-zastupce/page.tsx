@@ -38,8 +38,8 @@ export default function ObchodniZastupce() {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    const apiKey = process.env.NEXT_PUBLIC_STATICFORMS_KEY;
-    if (!apiKey) {
+    const accessKey = process.env.NEXT_PUBLIC_STATICFORMS_KEY;
+    if (!accessKey) {
       setIsSubmitting(false);
       setSubmitError('Formulář není správně nastaven. Zkuste to prosím později.');
       return;
@@ -48,9 +48,9 @@ export default function ObchodniZastupce() {
     try {
       const form = e.currentTarget;
       const formData = new FormData(form);
-      formData.set('apiKey', apiKey);
+      formData.set('accessKey', accessKey);
 
-      const response = await fetch('https://api.staticforms.xyz/submit', {
+      const response = await fetch('https://api.staticforms.dev/submit', {
         method: 'POST',
         body: formData,
       });
