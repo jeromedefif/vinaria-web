@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Building, Info } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Script from 'next/script';
 
 export default function ObchodniZastupce() {
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
@@ -305,6 +306,7 @@ export default function ObchodniZastupce() {
 
       {isOfferModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+          <Script src="https://www.google.com/recaptcha/api.js" strategy="lazyOnload" />
           <div className="bg-white rounded-xl shadow-xl max-w-lg w-full relative">
             <button
               type="button"
@@ -330,7 +332,7 @@ export default function ObchodniZastupce() {
               ) : (
                 <form onSubmit={handleOfferSubmit} className="space-y-4">
                   <input type="hidden" name="subject" value="Žádost o velkoobchodní nabídku" />
-                  <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+                  <input type="text" name="honeypot" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
                   <div>
                     <label htmlFor="offerName" className="block text-gray-700 mb-1 font-medium">
@@ -382,6 +384,10 @@ export default function ObchodniZastupce() {
                     <label htmlFor="offerConsent" className="text-sm text-gray-600">
                       Souhlasím se zpracováním osobních údajů za účelem obchodní komunikace.
                     </label>
+                  </div>
+
+                  <div className="flex justify-center">
+                    <div className="g-recaptcha" data-sitekey="6Leos2ksAAAAALgl7K8hlPM0Mn72MNjG8FxLacvS"></div>
                   </div>
 
                   {submitError && (
