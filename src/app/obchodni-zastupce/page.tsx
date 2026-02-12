@@ -6,10 +6,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Building, Info } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 
 export default function ObchodniZastupce() {
-  const searchParams = useSearchParams();
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -28,10 +26,12 @@ export default function ObchodniZastupce() {
   };
 
   useEffect(() => {
-    if (searchParams?.get('offer') === '1') {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('offer') === '1') {
       openOfferModal();
     }
-  }, [searchParams]);
+  }, []);
 
   const handleOfferSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
