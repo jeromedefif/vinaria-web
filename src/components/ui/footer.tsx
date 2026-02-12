@@ -43,6 +43,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/obchodni-zastupce?offer=1" className="font-montserrat text-sm text-gray-200 hover:text-wine-gold transition-colors">
+                  Žádost o velkoobchodní nabídku
+                </Link>
+              </li>
+              <li>
                 <Link href="/katalog" className="font-montserrat text-sm text-gray-200 hover:text-wine-gold transition-colors">
                   Katalog vín a nápojů
                 </Link>

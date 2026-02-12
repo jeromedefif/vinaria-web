@@ -52,6 +52,12 @@ Zahájit spolupráci
             >
               B2B přihlášení
             </a>
+            <Link
+              href="/obchodni-zastupce?offer=1"
+              className="font-montserrat border-2 border-wine-gold text-wine-gold px-8 py-3 rounded text-lg font-medium transition hover:bg-wine-gold/10"
+            >
+              Chci nabídku
+            </Link>
           </div>
         </motion.div>
       </div>
