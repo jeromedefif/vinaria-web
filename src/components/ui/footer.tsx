@@ -67,6 +67,16 @@ export default function Footer() {
                   B2B - beginy.cz
                 </a>
               </li>
+              <li>
+                <a
+                  href="/images/technicky_list_plyn.pdf"
+                  className="font-montserrat text-sm text-gray-200 hover:text-wine-gold transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Technický list pro plyny
+                </a>
+              </li>
             </ul>
           </div>
 
