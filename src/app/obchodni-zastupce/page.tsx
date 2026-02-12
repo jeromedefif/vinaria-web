@@ -3,14 +3,10 @@
 import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/ui/footer';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Users, Calendar, FileCheck, Building, ArrowRight, Info, CheckCircle, FileText } from 'lucide-react';
-import { useState } from 'react';
+import { Phone, Mail, Building, Info } from 'lucide-react';
 
 export default function ObchodniZastupce() {
-  // Odstraněny stavové proměnné a handlery pro formulář, který byl odstraněn
-
   return (
     <>
       <Navbar />
@@ -82,19 +78,6 @@ export default function ObchodniZastupce() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link
-                    href="/dotaznik"
-                    className="flex items-center justify-center gap-2 bg-wine-gold text-wine-burgundy px-6 py-3 rounded-full font-medium hover:bg-white hover:text-wine-burgundy transition shadow-md w-full"
-                  >
-                    <FileText size={20} />
-                    <span>Vyplnit dotazník</span>
-                  </Link>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
                   <a
                     href="https://www.beginy.cz"
                     target="_blank"
@@ -114,27 +97,6 @@ export default function ObchodniZastupce() {
               </h3>
 
               <div className="grid md:grid-cols-2 gap-8 grid-flow-row auto-rows-fr">
-                <Link href="/dotaznik">
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    className="flex gap-4 items-start bg-gray-50 p-5 rounded-lg border border-gray-100 transition-all duration-300 hover:shadow-md cursor-pointer h-full"
-                  >
-                    <div className="bg-wine-burgundy p-4 rounded-full shadow-md flex-shrink-0">
-                      <FileText size={22} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">Vyplním krátký dotazník</h4>
-                      <p className="text-gray-700 mb-3">
-                        Nejefektivnější způsob, jak nám sdělit Vaše požadavky. Díky dotazníku získám všechny důležité informace a ozvu se Vám zpět.
-                      </p>
-                      <span className="text-lg font-semibold text-wine-burgundy hover:text-wine-red transition-colors flex items-center">
-                        <FileText size={16} className="mr-2" />
-                        Vyplnit dotazník
-                      </span>
-                    </div>
-                  </motion.div>
-                </Link>
-
                 <a href="tel:+420734720994">
                   <motion.div
                     whileHover={{ scale: 1.03 }}
@@ -167,7 +129,7 @@ export default function ObchodniZastupce() {
                     <div>
                       <h4 className="font-bold text-lg mb-1">Napíši e-mail</h4>
                       <p className="text-gray-700 mb-3">
-                        Pokud nemáte čas na telefonát či vyplnění dotazníku, napište mi e-mail s Vašimi základními požadavky.
+                        Pokud nemáte čas na telefonát, napište mi e-mail s Vašimi základními požadavky.
                       </p>
                       <span className="text-lg font-semibold text-wine-burgundy hover:text-wine-red transition-colors flex items-center">
                         <Mail size={16} className="mr-2" />
@@ -216,15 +178,6 @@ export default function ObchodniZastupce() {
             a možnosti online objednávek pro vaši firmu.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/dotaznik"
-                className="flex items-center justify-center gap-2 bg-white text-wine-burgundy px-8 py-3 rounded-lg font-medium hover:bg-wine-cream transition shadow-md"
-              >
-                <FileText size={18} />
-                <span>Vyplnit dotazník</span>
-              </Link>
-            </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a
                 href="https://www.beginy.cz/register"
