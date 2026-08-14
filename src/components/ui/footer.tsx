@@ -68,8 +68,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="https://www.beginy.cz" className="font-montserrat text-sm text-gray-200 hover:text-wine-gold transition-colors" target="_blank" rel="noopener noreferrer">
-                  B2B - beginy.cz
+                <a href="https://www.beginy.cz/produkty" className="font-montserrat text-sm text-gray-200 hover:text-wine-gold transition-colors" target="_blank" rel="noopener noreferrer">
+                  Velkoobchodní katalog vín a nápojů – Beginy.cz
                 </a>
               </li>
               <li>
