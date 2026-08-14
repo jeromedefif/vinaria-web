@@ -4,6 +4,9 @@ import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/ui/footer';
 import ProductCategories from '@/components/sections/product-categories';
 import ScrollToTopButton from '@/components/ui/scroll-to-top-button';
+import { getBeginyCatalog, type BeginyCatalogCategory } from '@/lib/beginy-catalog';
+
+export const revalidate = 300;
 
 // Dynamická metadata pro stránku katalogu
 export const metadata: Metadata = {
@@ -29,31 +32,24 @@ export const metadata: Metadata = {
 }
 
 // Funkce pro generování JSON-LD strukturovaných dat
-function generateStructuredData() {
+function generateStructuredData(categories: BeginyCatalogCategory[]) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Révová vína",
-        "url": "https://vinaria.cz/katalog?oblast=vino",
-        "description": "Kvalitní révová vína z Evropy a dalších vinařských oblastí."
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Burčák",
-        "url": "https://vinaria.cz/katalog?oblast=burcak",
-        "description": "Moravský burčák a částečně zkvašený hroznový mošt."
-      },
-      // další položky...
-    ]
+    "itemListElement": categories.map((category, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": category.name,
+      "url": category.url,
+      "description": category.description
+    }))
   };
 }
 
-export default function KatalogPage() {
+export default async function KatalogPage() {
+  const catalog = await getBeginyCatalog();
+  const categories = catalog?.categories || [];
+
   return (
     <>
       <Navbar />
@@ -62,13 +58,14 @@ export default function KatalogPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generateStructuredData())
+            __html: JSON.stringify(generateStructuredData(categories)).replace(/</g, '\\u003c')
           }}
         />
         <ProductCategories
+          categories={catalog?.categories}
           showAll={true}
           title="Katalog vín a nápojů"
-          description="Kompletní sortiment našich produktů je dostupný v B2B portálu. Zde najdete základní přehled kategorií našeho sortimentu. Pro detailní informace o dostupnosti, cenách a objednávky kontaktujte našeho obchodního zástupce nebo použijte náš B2B portál."
+          description="Aktuální přehled produktů z našeho B2B katalogu. Dostupnost a sortiment se automaticky aktualizují podle nabídky na Beginy.cz. Pro objednávku se přihlaste do B2B portálu nebo kontaktujte našeho obchodního zástupce."
           showCta={true}
         />
       </main>
